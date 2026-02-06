@@ -1,5 +1,5 @@
 import { Routes, Route, Link, useLocation } from 'react-router-dom';
-import { Shield, Menu, X } from 'lucide-react';
+import { Shield, Menu, X, ChevronRight } from 'lucide-react';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { variantThemes } from '@/data/themes';
@@ -9,14 +9,15 @@ import Tools from './Tools';
 import Cases from './Cases';
 import Pipeline from './Pipeline';
 import About from './About';
+import './styles.css';
 
 const theme = variantThemes[1]!;
 
 const navLinks = [
-  { path: '/2', label: 'Home' },
+  { path: '/2', label: 'Overview' },
   { path: '/2/architecture', label: 'Architecture' },
   { path: '/2/tools', label: 'Tools' },
-  { path: '/2/cases', label: 'Cases' },
+  { path: '/2/cases', label: 'Case Studies' },
   { path: '/2/pipeline', label: 'Pipeline' },
   { path: '/2/about', label: 'About' },
 ];
@@ -25,79 +26,104 @@ export default function V2Layout() {
   const location = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
 
+  const isActive = (path: string) => {
+    if (path === '/2') return location.pathname === '/2';
+    return location.pathname.startsWith(path);
+  };
+
   return (
-    <div className="min-h-screen" style={{ backgroundColor: theme.bgColor, fontFamily: theme.fontBody }}>
-      <nav className="fixed top-0 left-0 right-0 z-50 border-b border-white/5 backdrop-blur-md bg-black/60">
-        <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-          <Link to="/2" className="flex items-center gap-2">
-            <Shield size={20} style={{ color: theme.primaryColor }} />
-            <span
-              className="text-lg font-bold"
-              style={{ fontFamily: theme.fontHeading, color: theme.primaryColor }}
-            >
-              SOC Showcase
+    <div className="v2-page">
+      {/* Navigation */}
+      <nav className="v2-nav sticky top-0 z-50 backdrop-blur-sm bg-white/95">
+        <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+          {/* Logo */}
+          <Link to="/2" className="flex items-center gap-2.5">
+            <Shield size={20} className="text-[#2563EB]" />
+            <span className="font-space font-bold text-base text-[#0F172A] tracking-tight">
+              SOC Stack
+            </span>
+            <span className="hidden sm:inline font-fira text-[10px] text-[#94A3B8] ml-0.5">
+              docs
             </span>
           </Link>
 
-          <div className="hidden md:flex items-center gap-6">
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                className="text-sm transition-colors"
-                style={{
-                  fontFamily: theme.fontHeading,
-                  color: location.pathname === link.path ? theme.primaryColor : '#94a3b8',
-                }}
-              >
-                {link.label}
-              </Link>
-            ))}
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center gap-1">
+            {navLinks.map((link) => {
+              const active = isActive(link.path);
+              return (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  className={`v2-nav-link ${active ? 'v2-nav-link--active' : ''}`}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
+            <div className="w-px h-5 bg-[#E2E8F0] mx-2" />
             <Link
               to="/"
-              className="text-xs px-3 py-1.5 rounded-md border border-white/10 text-gray-500 hover:text-white transition-colors"
+              className="font-fira text-[11px] px-3 py-1.5 rounded-md border border-[#E2E8F0] text-[#94A3B8] hover:text-[#1E293B] hover:border-[#CBD5E1] transition-colors"
             >
               All Variants
             </Link>
           </div>
 
+          {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-gray-400"
+            className="md:hidden text-[#64748B] p-1"
             onClick={() => setMobileOpen(!mobileOpen)}
           >
             {mobileOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
 
+        {/* Mobile Navigation */}
         <AnimatePresence>
           {mobileOpen && (
             <motion.div
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: 'auto', opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
-              className="md:hidden border-t border-white/5 bg-black/90 overflow-hidden"
+              className="md:hidden border-t border-[#E2E8F0] bg-white overflow-hidden"
             >
-              <div className="px-6 py-4 space-y-3">
-                {navLinks.map((link) => (
+              <div className="px-6 py-4 space-y-1">
+                {navLinks.map((link) => {
+                  const active = isActive(link.path);
+                  return (
+                    <Link
+                      key={link.path}
+                      to={link.path}
+                      onClick={() => setMobileOpen(false)}
+                      className={`flex items-center gap-2 px-3 py-2.5 rounded-md text-sm font-space font-medium transition-colors ${
+                        active
+                          ? 'text-[#2563EB] bg-[#DBEAFE]'
+                          : 'text-[#64748B] hover:text-[#1E293B] hover:bg-[#F8FAFC]'
+                      }`}
+                    >
+                      {active && <ChevronRight size={14} />}
+                      {link.label}
+                    </Link>
+                  );
+                })}
+                <div className="pt-2 border-t border-[#E2E8F0]">
                   <Link
-                    key={link.path}
-                    to={link.path}
+                    to="/"
                     onClick={() => setMobileOpen(false)}
-                    className="block text-sm"
-                    style={{
-                      color: location.pathname === link.path ? theme.primaryColor : '#94a3b8',
-                    }}
+                    className="block px-3 py-2 text-xs font-fira text-[#94A3B8]"
                   >
-                    {link.label}
+                    ← All Variants
                   </Link>
-                ))}
+                </div>
               </div>
             </motion.div>
           )}
         </AnimatePresence>
       </nav>
 
-      <main className="pt-16">
+      {/* Content */}
+      <main>
         <Routes>
           <Route index element={<Hero theme={theme} />} />
           <Route path="architecture" element={<Architecture theme={theme} />} />
@@ -107,6 +133,21 @@ export default function V2Layout() {
           <Route path="about" element={<About theme={theme} />} />
         </Routes>
       </main>
+
+      {/* Footer */}
+      <footer className="border-t border-[#E2E8F0] bg-[#F8FAFC]">
+        <div className="max-w-6xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-2 text-sm text-[#64748B] font-franklin">
+            <Shield size={14} className="text-[#2563EB]" />
+            <span>SOC Stack Documentation</span>
+            <span className="text-[#CBD5E1]">·</span>
+            <span>Solomon Neas</span>
+          </div>
+          <div className="font-fira text-[11px] text-[#94A3B8]">
+            soc.solomonneas.dev
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }

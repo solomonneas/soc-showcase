@@ -1,0 +1,116 @@
+/* V2: CLEAN TECHNICAL / ENGINEERING DOCUMENTATION */
+
+.v2-heading { font-family: 'Space Grotesk', sans-serif; color: #1E293B; }
+.v2-body { font-family: 'Libre Franklin', sans-serif; color: #1E293B; }
+.v2-mono { font-family: 'Fira Code', monospace; color: #1E293B; }
+
+.v2-page {
+  min-height: 100vh;
+  background-color: #FFFFFF;
+  color: #1E293B;
+  font-family: 'Libre Franklin', sans-serif;
+}
+
+/* Navigation */
+.v2-nav { background-color: #FFFFFF; border-bottom: 1px solid #E2E8F0; }
+.v2-nav-link {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.875rem; font-weight: 500; color: #64748B;
+  padding: 0.5rem 0.75rem; border-radius: 0.375rem;
+  transition: color 0.15s ease, background-color 0.15s ease;
+  text-decoration: none;
+}
+.v2-nav-link:hover { color: #1E293B; background-color: #F8FAFC; }
+.v2-nav-link--active { color: #2563EB; background-color: #DBEAFE; }
+
+/* Cards */
+.v2-card {
+  background-color: #FFFFFF; border: 1px solid #E2E8F0;
+  border-radius: 0.75rem; padding: 1.5rem;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.v2-card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04);
+  border-color: #CBD5E1;
+}
+
+/* Badges */
+.v2-badge {
+  font-family: 'Fira Code', monospace; font-size: 0.6875rem;
+  padding: 0.1875rem 0.5rem; border-radius: 9999px;
+  background-color: #F1F5F9; color: #64748B; border: 1px solid #E2E8F0;
+  line-height: 1.4;
+}
+.v2-badge--blue { background-color: #DBEAFE; color: #2563EB; border-color: #BFDBFE; }
+.v2-badge--green { background-color: #DCFCE7; color: #16A34A; border-color: #BBF7D0; }
+.v2-badge--amber { background-color: #FEF3C7; color: #D97706; border-color: #FDE68A; }
+
+.v2-divider { height: 1px; background-color: #E2E8F0; margin: 2rem 0; }
+
+/* Tables */
+.v2-table { width: 100%; border-collapse: collapse; font-family: 'Libre Franklin', sans-serif; font-size: 0.875rem; }
+.v2-table thead { border-bottom: 2px solid #E2E8F0; }
+.v2-table th {
+  font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 0.75rem;
+  text-transform: uppercase; letter-spacing: 0.05em; color: #64748B;
+  padding: 0.75rem 1rem; text-align: left;
+}
+.v2-table td { padding: 0.75rem 1rem; color: #1E293B; border-bottom: 1px solid #F1F5F9; }
+.v2-table tbody tr:nth-child(even) { background-color: #F8FAFC; }
+.v2-table tbody tr:hover { background-color: #F1F5F9; }
+
+/* Code Blocks */
+.v2-code-block {
+  font-family: 'Fira Code', monospace; font-size: 0.8125rem; line-height: 1.7;
+  background-color: #0F172A; color: #E2E8F0; border-radius: 0.5rem;
+  padding: 1.25rem 1.5rem; overflow-x: auto; border: 1px solid #1E293B;
+}
+
+/* Accordion */
+.v2-accordion-trigger {
+  cursor: pointer; display: flex; align-items: center; justify-content: space-between;
+  padding: 0.75rem 1rem; border: 1px solid #E2E8F0; border-radius: 0.5rem;
+  background-color: #FFFFFF; transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+.v2-accordion-trigger:hover { background-color: #F8FAFC; border-color: #CBD5E1; }
+.v2-accordion-trigger--open {
+  border-bottom-left-radius: 0; border-bottom-right-radius: 0;
+  border-bottom-color: transparent; background-color: #F8FAFC;
+}
+.v2-accordion-content {
+  border: 1px solid #E2E8F0; border-top: 0;
+  border-bottom-left-radius: 0.5rem; border-bottom-right-radius: 0.5rem;
+  padding: 1rem; background-color: #FAFBFC;
+}
+
+/* Section Headers */
+.v2-section-label {
+  font-family: 'Fira Code', monospace; font-size: 0.6875rem;
+  letter-spacing: 0.1em; text-transform: uppercase; color: #2563EB; margin-bottom: 0.5rem;
+}
+.v2-section-title { font-family: 'Space Grotesk', sans-serif; font-weight: 700; color: #0F172A; line-height: 1.2; }
+.v2-section-subtitle { font-family: 'Libre Franklin', sans-serif; color: #64748B; line-height: 1.6; }
+
+.v2-bg-light { background-color: #F8FAFC; }
+.v2-border { border-color: #E2E8F0; }
+
+/* Status Labels */
+.v2-status {
+  font-family: 'Fira Code', monospace; font-size: 0.6875rem; font-weight: 500;
+  display: inline-flex; align-items: center; gap: 0.375rem;
+}
+.v2-status::before { content: ''; width: 6px; height: 6px; border-radius: 50%; display: inline-block; }
+.v2-status--production::before { background-color: #16A34A; }
+.v2-status--production { color: #16A34A; }
+.v2-status--beta::before { background-color: #D97706; }
+.v2-status--beta { color: #D97706; }
+.v2-status--development::before { background-color: #2563EB; }
+.v2-status--development { color: #2563EB; }
+.v2-status--planned::before { background-color: #94A3B8; }
+.v2-status--planned { color: #94A3B8; }
+
+/* Scrollbar */
+.v2-page ::-webkit-scrollbar { width: 6px; }
+.v2-page ::-webkit-scrollbar-track { background: #F8FAFC; }
+.v2-page ::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 3px; }
+.v2-page ::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
