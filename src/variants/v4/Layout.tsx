@@ -1,103 +1,92 @@
 import { Routes, Route, Link, useLocation } from 'react-router-dom';
-import { Shield, Menu, X } from 'lucide-react';
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { variantThemes } from '@/data/themes';
+import { variantThemes } from '../../data/themes';
 import Hero from './Hero';
 import Architecture from './Architecture';
 import Tools from './Tools';
 import Cases from './Cases';
 import Pipeline from './Pipeline';
 import About from './About';
+import './styles.css';
 
 const theme = variantThemes[3]!;
 
 const navLinks = [
-  { path: '/4', label: 'Home' },
-  { path: '/4/architecture', label: 'Architecture' },
-  { path: '/4/tools', label: 'Tools' },
-  { path: '/4/cases', label: 'Cases' },
-  { path: '/4/pipeline', label: 'Pipeline' },
-  { path: '/4/about', label: 'About' },
+  { path: '/4', label: '§1 Abstract', section: '1' },
+  { path: '/4/architecture', label: '§2 Architecture', section: '2' },
+  { path: '/4/tools', label: '§3 Components', section: '3' },
+  { path: '/4/cases', label: '§4 Cases', section: '4' },
+  { path: '/4/pipeline', label: '§5 Pipeline', section: '5' },
+  { path: '/4/about', label: '§6 References', section: '6' },
 ];
 
 export default function V4Layout() {
   const location = useLocation();
-  const [mobileOpen, setMobileOpen] = useState(false);
+
+  const isActive = (path: string) => {
+    if (path === '/4') return location.pathname === '/4';
+    return location.pathname.startsWith(path);
+  };
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: theme.bgColor, fontFamily: theme.fontBody }}>
-      <nav className="fixed top-0 left-0 right-0 z-50 border-b border-white/5 backdrop-blur-md bg-black/60">
-        <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-          <Link to="/4" className="flex items-center gap-2">
-            <Shield size={20} style={{ color: theme.primaryColor }} />
-            <span
-              className="text-lg font-bold"
-              style={{ fontFamily: theme.fontHeading, color: theme.primaryColor }}
-            >
-              SOC Showcase
-            </span>
+    <div
+      style={{
+        minHeight: '100vh',
+        backgroundColor: '#FFFFFF',
+        fontFamily: "'Crimson Pro', 'Georgia', serif",
+      }}
+    >
+      {/* Academic-style navigation */}
+      <nav className="paper-nav">
+        <div className="paper-nav-inner">
+          {/* Paper title (compact) */}
+          <Link
+            to="/4"
+            style={{
+              fontFamily: "'Source Serif 4', serif",
+              fontSize: '0.85rem',
+              fontWeight: 700,
+              color: '#1C1917',
+              textDecoration: 'none',
+              whiteSpace: 'nowrap',
+            }}
+          >
+            SOC Stack
           </Link>
 
-          <div className="hidden md:flex items-center gap-6">
+          {/* Section links */}
+          <div className="paper-nav-links">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
-                className="text-sm transition-colors"
-                style={{
-                  fontFamily: theme.fontHeading,
-                  color: location.pathname === link.path ? theme.primaryColor : '#94a3b8',
-                }}
+                className={`paper-nav-link ${isActive(link.path) ? 'active' : ''}`}
               >
                 {link.label}
               </Link>
             ))}
+
+            {/* All Variants link */}
             <Link
               to="/"
-              className="text-xs px-3 py-1.5 rounded-md border border-white/10 text-gray-500 hover:text-white transition-colors"
+              style={{
+                fontFamily: "'IBM Plex Mono', monospace",
+                fontSize: '0.7rem',
+                color: '#57534E',
+                textDecoration: 'none',
+                border: '1px solid #D6D3D1',
+                padding: '0.2rem 0.5rem',
+                borderRadius: '2px',
+                whiteSpace: 'nowrap',
+              }}
             >
-              All Variants
+              ← All Variants
             </Link>
           </div>
-
-          <button
-            className="md:hidden text-gray-400"
-            onClick={() => setMobileOpen(!mobileOpen)}
-          >
-            {mobileOpen ? <X size={20} /> : <Menu size={20} />}
-          </button>
         </div>
-
-        <AnimatePresence>
-          {mobileOpen && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: 'auto', opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              className="md:hidden border-t border-white/5 bg-black/90 overflow-hidden"
-            >
-              <div className="px-6 py-4 space-y-3">
-                {navLinks.map((link) => (
-                  <Link
-                    key={link.path}
-                    to={link.path}
-                    onClick={() => setMobileOpen(false)}
-                    className="block text-sm"
-                    style={{
-                      color: location.pathname === link.path ? theme.primaryColor : '#94a3b8',
-                    }}
-                  >
-                    {link.label}
-                  </Link>
-                ))}
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </nav>
 
-      <main className="pt-16">
+      {/* Paper body */}
+      <main style={{ backgroundColor: '#FFFFFF' }}>
         <Routes>
           <Route index element={<Hero theme={theme} />} />
           <Route path="architecture" element={<Architecture theme={theme} />} />
@@ -107,6 +96,20 @@ export default function V4Layout() {
           <Route path="about" element={<About theme={theme} />} />
         </Routes>
       </main>
+
+      {/* Footer (minimal, academic) */}
+      <footer
+        style={{
+          borderTop: '1px solid #D6D3D1',
+          padding: '1.5rem',
+          textAlign: 'center',
+          fontFamily: "'IBM Plex Mono', monospace",
+          fontSize: '0.7rem',
+          color: '#57534E',
+        }}
+      >
+        SOC Stack — soc.solomonneas.dev — © 2026 Solomon Neas
+      </footer>
     </div>
   );
 }
