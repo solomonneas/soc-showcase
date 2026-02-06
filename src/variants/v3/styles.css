@@ -1,0 +1,321 @@
+/* V3: FUTURISTIC HUD / SCI-FI INTERFACE */
+
+/* ── Hex Grid Background ──────────────────────── */
+.v3-hex-grid {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.v3-hex-grid::before {
+  content: '';
+  position: absolute;
+  inset: -50%;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='100' viewBox='0 0 56 100'%3E%3Cpath d='M28 66L0 50L0 16L28 0L56 16L56 50L28 66L28 100' fill='none' stroke='rgba(0,240,255,0.04)' stroke-width='0.5'/%3E%3Cpath d='M28 0L28 34L0 50L0 84L28 100L56 84L56 50L28 34' fill='none' stroke='rgba(0,240,255,0.02)' stroke-width='0.5'/%3E%3C/svg%3E");
+  background-size: 56px 100px;
+  animation: v3-hex-drift 60s linear infinite;
+  opacity: 0.7;
+}
+
+@keyframes v3-hex-drift {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(56px, 100px); }
+}
+
+/* ── Scanline Effects ─────────────────────────── */
+.v3-scanlines {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 998;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 240, 255, 0.008) 2px,
+    rgba(0, 240, 255, 0.008) 4px
+  );
+}
+
+.v3-scanline-sweep {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 997;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(0, 240, 255, 0.03) 50%,
+    transparent 100%
+  );
+  background-size: 100% 200%;
+  animation: v3-sweep 8s linear infinite;
+}
+
+@keyframes v3-sweep {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 0% 200%; }
+}
+
+/* ── Glass-morphism ───────────────────────────── */
+.v3-glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 240, 255, 0.2);
+}
+
+.v3-glass-strong {
+  background: rgba(0, 10, 20, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 240, 255, 0.2);
+}
+
+/* ── Glowing Borders ──────────────────────────── */
+.v3-glow-border {
+  border: 1px solid rgba(0, 240, 255, 0.2);
+  box-shadow:
+    0 0 15px rgba(0, 240, 255, 0.05),
+    inset 0 0 15px rgba(0, 240, 255, 0.02);
+}
+
+/* ── Chromatic Aberration ─────────────────────── */
+.v3-chromatic {
+  text-shadow:
+    -1px 0 rgba(0, 240, 255, 0.5),
+    1px 0 rgba(255, 0, 255, 0.5);
+}
+
+.v3-chromatic-subtle {
+  text-shadow:
+    -0.5px 0 rgba(0, 240, 255, 0.3),
+    0.5px 0 rgba(255, 0, 255, 0.3);
+}
+
+/* ── HUD Corner Brackets ─────────────────────── */
+.v3-hud-corners {
+  position: relative;
+}
+
+.v3-hud-corners::before,
+.v3-hud-corners::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  pointer-events: none;
+}
+
+.v3-hud-corners::before {
+  top: -1px;
+  left: -1px;
+  border-top: 2px solid #00F0FF;
+  border-left: 2px solid #00F0FF;
+  opacity: 0.6;
+}
+
+.v3-hud-corners::after {
+  bottom: -1px;
+  right: -1px;
+  border-bottom: 2px solid #00F0FF;
+  border-right: 2px solid #00F0FF;
+  opacity: 0.6;
+}
+
+/* ── Panel Scan Effect ────────────────────────── */
+.v3-panel-scan {
+  position: relative;
+  overflow: hidden;
+}
+
+.v3-panel-scan::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #00F0FF, transparent);
+  opacity: 0.6;
+  animation: v3-scan-line 4s ease-in-out infinite;
+}
+
+@keyframes v3-scan-line {
+  0%, 100% { top: 0; opacity: 0; }
+  10% { opacity: 0.6; }
+  90% { opacity: 0.6; }
+  100% { top: 100%; opacity: 0; }
+}
+
+/* ── Gradient Rotation on Hover ───────────────── */
+@property --v3-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+.v3-gradient-border {
+  position: relative;
+  z-index: 0;
+}
+
+.v3-gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  z-index: -1;
+  border-radius: inherit;
+  background: conic-gradient(from var(--v3-angle, 0deg), #00F0FF, #FF00FF, #00F0FF);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.v3-gradient-border:hover::before {
+  opacity: 1;
+  animation: v3-rotate 3s linear infinite;
+}
+
+.v3-gradient-border::after {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  z-index: -1;
+  border-radius: inherit;
+  background: #0A0A1A;
+}
+
+@keyframes v3-rotate {
+  to { --v3-angle: 360deg; }
+}
+
+/* ── Pulse Animations ─────────────────────────── */
+.v3-pulse-cyan {
+  animation: v3-pulse-c 2s ease-in-out infinite;
+}
+
+@keyframes v3-pulse-c {
+  0%, 100% { box-shadow: 0 0 5px rgba(0, 240, 255, 0.3), 0 0 10px rgba(0, 240, 255, 0.1); }
+  50% { box-shadow: 0 0 10px rgba(0, 240, 255, 0.6), 0 0 20px rgba(0, 240, 255, 0.3), 0 0 30px rgba(0, 240, 255, 0.1); }
+}
+
+.v3-pulse-green {
+  animation: v3-pulse-g 2s ease-in-out infinite;
+}
+
+@keyframes v3-pulse-g {
+  0%, 100% { box-shadow: 0 0 5px rgba(57, 255, 20, 0.3); }
+  50% { box-shadow: 0 0 10px rgba(57, 255, 20, 0.6), 0 0 20px rgba(57, 255, 20, 0.2); }
+}
+
+/* ── Glow Text ────────────────────────────────── */
+.v3-glow-cyan { color: #00F0FF; text-shadow: 0 0 10px rgba(0,240,255,0.5), 0 0 20px rgba(0,240,255,0.2); }
+.v3-glow-magenta { color: #FF00FF; text-shadow: 0 0 10px rgba(255,0,255,0.5), 0 0 20px rgba(255,0,255,0.2); }
+.v3-glow-green { color: #39FF14; text-shadow: 0 0 10px rgba(57,255,20,0.5), 0 0 20px rgba(57,255,20,0.2); }
+
+/* ── HUD Navigation ───────────────────────────── */
+.v3-nav {
+  background: rgba(5, 5, 16, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+}
+
+.v3-nav-link {
+  font-family: 'Audiowide', sans-serif;
+  font-size: 0.6875rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #5B7A8A;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.25rem;
+  transition: color 0.2s, background-color 0.2s, text-shadow 0.2s;
+  text-decoration: none;
+  position: relative;
+}
+
+.v3-nav-link:hover { color: #E0F7FF; }
+
+.v3-nav-link--active {
+  color: #00F0FF;
+  text-shadow: 0 0 10px rgba(0, 240, 255, 0.4);
+  background: rgba(0, 240, 255, 0.05);
+}
+
+.v3-nav-link--active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #00F0FF;
+  box-shadow: 0 0 10px #00F0FF, 0 0 20px rgba(0, 240, 255, 0.3);
+}
+
+/* ── HUD Status Bar ───────────────────────────── */
+.v3-status-bar {
+  font-family: 'Fira Code', monospace;
+  font-size: 0.625rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #5B7A8A;
+  background: rgba(5, 5, 16, 0.9);
+  border-top: 1px solid rgba(0, 240, 255, 0.2);
+  padding: 0.375rem 1rem;
+}
+
+.v3-status-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  display: inline-block;
+  background: #39FF14;
+  box-shadow: 0 0 6px rgba(57, 255, 20, 0.6);
+  animation: v3-blink 3s ease-in-out infinite;
+}
+
+@keyframes v3-blink {
+  0%, 90%, 100% { opacity: 1; }
+  95% { opacity: 0.3; }
+}
+
+/* ── Particle Stream ──────────────────────────── */
+.v3-particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: #00F0FF;
+  box-shadow: 0 0 4px #00F0FF;
+  animation: v3-float var(--dur, 8s) linear infinite;
+  animation-delay: var(--del, 0s);
+  left: var(--x, 50%);
+  opacity: 0;
+}
+
+@keyframes v3-float {
+  0% { transform: translateY(100vh); opacity: 0; }
+  10% { opacity: 0.6; }
+  90% { opacity: 0.6; }
+  100% { transform: translateY(-20vh); opacity: 0; }
+}
+
+/* ── Section Label ────────────────────────────── */
+.v3-section-label {
+  font-family: 'Fira Code', monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #00F0FF;
+  opacity: 0.7;
+}
+
+/* ── Scrollbar ────────────────────────────────── */
+.v3-page ::-webkit-scrollbar { width: 6px; }
+.v3-page ::-webkit-scrollbar-track { background: #050510; }
+.v3-page ::-webkit-scrollbar-thumb { background: rgba(0, 240, 255, 0.15); border-radius: 3px; }
+.v3-page ::-webkit-scrollbar-thumb:hover { background: rgba(0, 240, 255, 0.3); }

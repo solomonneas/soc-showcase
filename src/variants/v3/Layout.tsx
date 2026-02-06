@@ -9,6 +9,7 @@ import Tools from './Tools';
 import Cases from './Cases';
 import Pipeline from './Pipeline';
 import About from './About';
+import './styles.css';
 
 const theme = variantThemes[2]!;
 
@@ -21,83 +22,128 @@ const navLinks = [
   { path: '/3/about', label: 'About' },
 ];
 
+function HudStatusBar() {
+  return (
+    <div className="v3-status-bar fixed bottom-0 left-0 right-0 z-50 flex items-center justify-center gap-6 flex-wrap">
+      <span className="flex items-center gap-2">
+        <span className="v3-status-dot" />
+        <span>Systems: <span className="v3-glow-green">Online</span></span>
+      </span>
+      <span className="text-[#5B7A8A]">|</span>
+      <span>MCP Servers: <span className="v3-glow-cyan">7/7</span></span>
+      <span className="text-[#5B7A8A]">|</span>
+      <span>Threat Level: <span className="v3-glow-green">Nominal</span></span>
+      <span className="text-[#5B7A8A]">|</span>
+      <span className="text-[#5B7A8A] hidden sm:inline">
+        {new Date().toISOString().replace('T', ' ').slice(0, 19)} UTC
+      </span>
+    </div>
+  );
+}
+
 export default function V3Layout() {
   const location = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
 
+  const isActive = (path: string) => {
+    if (path === '/3') return location.pathname === '/3';
+    return location.pathname.startsWith(path);
+  };
+
   return (
-    <div className="min-h-screen" style={{ backgroundColor: theme.bgColor, fontFamily: theme.fontBody }}>
-      <nav className="fixed top-0 left-0 right-0 z-50 border-b border-white/5 backdrop-blur-md bg-black/60">
-        <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-          <Link to="/3" className="flex items-center gap-2">
-            <Shield size={20} style={{ color: theme.primaryColor }} />
-            <span
-              className="text-lg font-bold"
-              style={{ fontFamily: theme.fontHeading, color: theme.primaryColor }}
+    <div className="v3-page">
+      {/* Background effects */}
+      <div className="v3-hex-grid" />
+      <div className="v3-scanlines" />
+      <div className="v3-scanline-sweep" />
+
+      {/* Navigation */}
+      <nav className="v3-nav fixed top-0 left-0 right-0 z-50">
+        <div className="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
+          {/* Logo */}
+          <Link to="/3" className="flex items-center gap-2.5">
+            <motion.div
+              animate={{ rotate: [0, 360] }}
+              transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
             >
-              SOC Showcase
+              <Shield size={18} className="text-[#00F0FF]" style={{ filter: 'drop-shadow(0 0 6px rgba(0,240,255,0.5))' }} />
+            </motion.div>
+            <span className="font-audiowide text-sm tracking-wider text-[#00F0FF]" style={{ textShadow: '0 0 10px rgba(0,240,255,0.3)' }}>
+              SOC<span className="text-[#FF00FF]">:</span>HUD
             </span>
           </Link>
 
-          <div className="hidden md:flex items-center gap-6">
+          {/* Desktop Nav */}
+          <div className="hidden md:flex items-center gap-1">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
-                className="text-sm transition-colors"
-                style={{
-                  fontFamily: theme.fontHeading,
-                  color: location.pathname === link.path ? theme.primaryColor : '#94a3b8',
-                }}
+                className={`v3-nav-link ${isActive(link.path) ? 'v3-nav-link--active' : ''}`}
               >
                 {link.label}
               </Link>
             ))}
+            <div className="w-px h-4 bg-[rgba(0,240,255,0.15)] mx-2" />
             <Link
               to="/"
-              className="text-xs px-3 py-1.5 rounded-md border border-white/10 text-gray-500 hover:text-white transition-colors"
+              className="font-fira text-[10px] px-3 py-1.5 rounded border border-[rgba(0,240,255,0.15)] text-[#5B7A8A] hover:text-[#E0F7FF] hover:border-[rgba(0,240,255,0.3)] transition-colors"
             >
               All Variants
             </Link>
           </div>
 
+          {/* Mobile Menu */}
           <button
-            className="md:hidden text-gray-400"
+            className="md:hidden text-[#5B7A8A] hover:text-[#00F0FF] transition-colors"
             onClick={() => setMobileOpen(!mobileOpen)}
           >
             {mobileOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
 
+        {/* Mobile Navigation */}
         <AnimatePresence>
           {mobileOpen && (
             <motion.div
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: 'auto', opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
-              className="md:hidden border-t border-white/5 bg-black/90 overflow-hidden"
+              className="md:hidden border-t border-[rgba(0,240,255,0.1)] overflow-hidden"
+              style={{ background: 'rgba(5,5,16,0.95)' }}
             >
-              <div className="px-6 py-4 space-y-3">
+              <div className="px-6 py-4 space-y-1">
                 {navLinks.map((link) => (
                   <Link
                     key={link.path}
                     to={link.path}
                     onClick={() => setMobileOpen(false)}
-                    className="block text-sm"
-                    style={{
-                      color: location.pathname === link.path ? theme.primaryColor : '#94a3b8',
-                    }}
+                    className={`block px-3 py-2.5 rounded text-sm font-audiowide tracking-wider transition-colors ${
+                      isActive(link.path)
+                        ? 'text-[#00F0FF] bg-[rgba(0,240,255,0.05)]'
+                        : 'text-[#5B7A8A] hover:text-[#E0F7FF]'
+                    }`}
                   >
                     {link.label}
                   </Link>
                 ))}
+                <div className="pt-2 border-t border-[rgba(0,240,255,0.1)]">
+                  <Link
+                    to="/"
+                    onClick={() => setMobileOpen(false)}
+                    className="block px-3 py-2 text-xs font-fira text-[#5B7A8A]"
+                  >
+                    ← All Variants
+                  </Link>
+                </div>
               </div>
             </motion.div>
           )}
         </AnimatePresence>
       </nav>
 
-      <main className="pt-16">
+      {/* Content */}
+      <main className="relative z-10 pt-14 pb-8">
         <Routes>
           <Route index element={<Hero theme={theme} />} />
           <Route path="architecture" element={<Architecture theme={theme} />} />
@@ -107,6 +153,9 @@ export default function V3Layout() {
           <Route path="about" element={<About theme={theme} />} />
         </Routes>
       </main>
+
+      {/* Persistent HUD Status Bar */}
+      <HudStatusBar />
     </div>
   );
 }
