@@ -1,0 +1,349 @@
+/* ==========================================================================
+   Variant 5 — Startup Landing / Modern SaaS
+   Vercel/Linear/Raycast inspired. Bold, dark, dramatic.
+   ========================================================================== */
+
+/* ---- CSS Custom Properties ---- */
+:root {
+  --v5-bg: #0A0A0F;
+  --v5-surface: #18181B;
+  --v5-violet: #7C3AED;
+  --v5-blue: #2563EB;
+  --v5-emerald: #10B981;
+  --v5-text: #FAFAFA;
+  --v5-text-dim: #A1A1AA;
+  --v5-glass: rgba(255, 255, 255, 0.05);
+  --v5-glass-border: rgba(255, 255, 255, 0.1);
+  --v5-gradient: linear-gradient(135deg, #7C3AED, #2563EB);
+}
+
+/* ---- Gradient Mesh Backgrounds ---- */
+.v5-mesh-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+.v5-mesh-bg::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background:
+    radial-gradient(ellipse 600px 600px at 20% 20%, rgba(124, 58, 237, 0.12), transparent),
+    radial-gradient(ellipse 500px 500px at 80% 30%, rgba(37, 99, 235, 0.08), transparent),
+    radial-gradient(ellipse 400px 400px at 60% 80%, rgba(16, 185, 129, 0.06), transparent);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.v5-mesh-hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.v5-mesh-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 800px 800px at 30% 10%, rgba(124, 58, 237, 0.15), transparent),
+    radial-gradient(ellipse 600px 600px at 70% 20%, rgba(37, 99, 235, 0.12), transparent),
+    radial-gradient(ellipse 500px 500px at 50% 70%, rgba(16, 185, 129, 0.05), transparent),
+    radial-gradient(ellipse 300px 300px at 90% 80%, rgba(124, 58, 237, 0.08), transparent);
+  pointer-events: none;
+  z-index: 0;
+  animation: v5-mesh-drift 20s ease-in-out infinite alternate;
+}
+
+@keyframes v5-mesh-drift {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-2%, 1%) scale(1.02); }
+  100% { transform: translate(1%, -1%) scale(1); }
+}
+
+/* ---- Glass-morphism ---- */
+.v5-glass {
+  background: var(--v5-glass);
+  border: 1px solid var(--v5-glass-border);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.v5-glass-strong {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.v5-glass-hover {
+  background: var(--v5-glass);
+  border: 1px solid var(--v5-glass-border);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.3s ease;
+}
+
+.v5-glass-hover:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+/* ---- Gradient Text ---- */
+.v5-gradient-text {
+  background: linear-gradient(135deg, #7C3AED, #2563EB);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.v5-gradient-text-wide {
+  background: linear-gradient(135deg, #7C3AED 0%, #2563EB 50%, #10B981 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.v5-gradient-text-emerald {
+  background: linear-gradient(135deg, #10B981, #2563EB);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ---- Gradient Borders ---- */
+.v5-gradient-border {
+  position: relative;
+  border-radius: 1rem;
+}
+
+.v5-gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.3), rgba(37, 99, 235, 0.3));
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.v5-gradient-border:hover::before {
+  padding: 1.5px;
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.6), rgba(37, 99, 235, 0.6), rgba(16, 185, 129, 0.4));
+}
+
+/* ---- Bento Grid ---- */
+.v5-bento-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+@media (max-width: 1024px) {
+  .v5-bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .v5-bento-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.v5-bento-featured {
+  grid-column: span 2;
+}
+
+@media (max-width: 640px) {
+  .v5-bento-featured {
+    grid-column: span 1;
+  }
+}
+
+/* ---- Typing Cursor ---- */
+.v5-typing-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.1em;
+  background: var(--v5-violet);
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  animation: v5-blink 0.8s step-end infinite;
+}
+
+@keyframes v5-blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* ---- Glow Effects ---- */
+.v5-glow-violet {
+  box-shadow:
+    0 0 20px rgba(124, 58, 237, 0.15),
+    0 0 60px rgba(124, 58, 237, 0.08);
+}
+
+.v5-glow-blue {
+  box-shadow:
+    0 0 20px rgba(37, 99, 235, 0.15),
+    0 0 60px rgba(37, 99, 235, 0.08);
+}
+
+/* ---- Button Styles ---- */
+.v5-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  border-radius: 0.75rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  color: #FAFAFA;
+  background: linear-gradient(135deg, #7C3AED, #2563EB);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.v5-btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    0 4px 20px rgba(124, 58, 237, 0.3),
+    0 8px 40px rgba(37, 99, 235, 0.15);
+}
+
+.v5-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  border-radius: 0.75rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  color: #A1A1AA;
+  background: transparent;
+  border: 1px solid var(--v5-glass-border);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.v5-btn-secondary:hover {
+  color: #FAFAFA;
+  border-color: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-1px);
+}
+
+/* ---- Section Label ---- */
+.v5-section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--v5-violet);
+}
+
+.v5-section-label::before {
+  content: '';
+  display: block;
+  width: 2rem;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--v5-violet));
+}
+
+/* ---- Progress Bar ---- */
+.v5-progress-bar {
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+}
+
+.v5-progress-fill {
+  height: 100%;
+  border-radius: 3px;
+  background: linear-gradient(90deg, #7C3AED, #2563EB);
+}
+
+/* ---- Nav Glass ---- */
+.v5-nav-glass {
+  background: rgba(10, 10, 15, 0.6);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(16px) saturate(1.2);
+  -webkit-backdrop-filter: blur(16px) saturate(1.2);
+  transition: all 0.3s ease;
+}
+
+.v5-nav-scrolled {
+  background: rgba(10, 10, 15, 0.9);
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+/* ---- Avatar Gradient Ring ---- */
+.v5-avatar-ring {
+  display: inline-flex;
+  padding: 3px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #7C3AED, #2563EB, #10B981);
+}
+
+/* ---- Skill Pill ---- */
+.v5-skill-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.375rem 0.875rem;
+  border-radius: 9999px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #A1A1AA;
+  transition: all 0.2s ease;
+}
+
+.v5-skill-pill:hover {
+  background: rgba(124, 58, 237, 0.1);
+  border-color: rgba(124, 58, 237, 0.3);
+  color: #FAFAFA;
+}
+
+/* ---- Dot Grid ---- */
+.v5-dot-grid {
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* ---- Modal ---- */
+.v5-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(10, 10, 15, 0.8);
+}
