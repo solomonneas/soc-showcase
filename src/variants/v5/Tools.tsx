@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import * as Icons from 'lucide-react';
+import { getLucideIcon } from '@/components/shared/getLucideIcon';
 import { tools, toolCategories } from '@/data/tools';
 import type { PageProps, Tool } from '@/types';
 import './styles.css';
@@ -16,7 +17,7 @@ const featuredTools = ['bro-hunter', 'playbook-forge'];
 
 function ToolBentoCard({ tool, featured }: { tool: Tool; featured: boolean }) {
   const status = statusConfig[tool.status];
-  const IconComponent = (Icons as Record<string, React.ComponentType<{ size?: number; className?: string }>>)[tool.icon] ?? Icons.Box;
+  const IconComponent = getLucideIcon(tool.icon) as React.ComponentType<{ size?: number; className?: string }>;
 
   return (
     <motion.div

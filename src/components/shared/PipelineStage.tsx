@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import * as Icons from 'lucide-react';
+import { getLucideIcon } from '@/components/shared/getLucideIcon';
 import type { PipelineStep } from '@/types';
 
 interface PipelineStageProps {
@@ -18,7 +19,7 @@ export default function PipelineStage({
   className = '',
 }: PipelineStageProps) {
   const color = primaryColor ?? step.color;
-  const IconComponent = (Icons as Record<string, React.ComponentType<{ size?: number; color?: string; className?: string }>>)[step.icon] ?? Icons.Circle;
+  const IconComponent = getLucideIcon(step.icon, Icons.Circle) as React.ComponentType<{ size?: number; color?: string; className?: string }>;
 
   return (
     <motion.div

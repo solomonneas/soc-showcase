@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import * as Icons from 'lucide-react';
+import { getLucideIcon } from '@/components/shared/getLucideIcon';
 import { pipelineSteps } from '@/data/pipeline';
 import type { PageProps } from '@/types';
 
@@ -37,6 +38,7 @@ function ParticleStream() {
 }
 
 export default function Pipeline({ theme: _ }: PageProps) {
+  const prefersReduced = useReducedMotion();
   const [activeStep, setActiveStep] = useState(0);
   const [hoveredStep, setHoveredStep] = useState<number | null>(null);
 
@@ -80,7 +82,7 @@ export default function Pipeline({ theme: _ }: PageProps) {
               <motion.span
                 className="w-1.5 h-1.5 rounded-full bg-[#39FF14]"
                 animate={{ opacity: [1, 0.3, 1] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
+                transition={{ duration: 1.5, repeat: prefersReduced ? 0 : Infinity }}
               />
               LIVE
             </span>
@@ -144,7 +146,7 @@ export default function Pipeline({ theme: _ }: PageProps) {
                         strokeDasharray="4 8"
                         opacity="0.4"
                         animate={{ strokeDashoffset: [0, -24] }}
-                        transition={{ duration: 1.5, repeat: Infinity, ease: 'linear' }}
+                        transition={{ duration: 1.5, repeat: prefersReduced ? 0 : Infinity, ease: 'linear' }}
                       />
                     )}
                   </g>
@@ -177,7 +179,7 @@ export default function Pipeline({ theme: _ }: PageProps) {
                         strokeWidth="1"
                         opacity="0.4"
                         animate={{ r: [20, 28, 20], opacity: [0.4, 0.1, 0.4] }}
-                        transition={{ duration: 2, repeat: Infinity }}
+                        transition={{ duration: 2, repeat: prefersReduced ? 0 : Infinity }}
                       />
                     )}
 
@@ -190,7 +192,7 @@ export default function Pipeline({ theme: _ }: PageProps) {
                       strokeWidth={isActive || isHovered ? 2 : 1}
                       filter={isActive ? 'url(#v3-glow)' : undefined}
                       animate={isActive ? { scale: [1, 1.05, 1] } : {}}
-                      transition={{ duration: 1.5, repeat: Infinity }}
+                      transition={{ duration: 1.5, repeat: prefersReduced ? 0 : Infinity }}
                     />
 
                     {/* Step number */}
@@ -266,9 +268,7 @@ export default function Pipeline({ theme: _ }: PageProps) {
           >
             {(() => {
               const step = pipelineSteps[activeStep]!;
-              const IconComponent = (
-                Icons as Record<string, React.ComponentType<{ size?: number; style?: React.CSSProperties }>>
-              )[step.icon] ?? Icons.Circle;
+              const IconComponent = getLucideIcon(step.icon, Icons.Circle) as React.ComponentType<{ size?: number; style?: React.CSSProperties }>;
 
               return (
                 <>
@@ -349,9 +349,7 @@ export default function Pipeline({ theme: _ }: PageProps) {
             {pipelineSteps.map((step, i) => {
               const isActive = i === activeStep;
               const isPassed = i < activeStep;
-              const IconComponent = (
-                Icons as Record<string, React.ComponentType<{ size?: number; style?: React.CSSProperties }>>
-              )[step.icon] ?? Icons.Circle;
+              const IconComponent = getLucideIcon(step.icon, Icons.Circle) as React.ComponentType<{ size?: number; style?: React.CSSProperties }>;
 
               return (
                 <motion.button
@@ -404,7 +402,7 @@ export default function Pipeline({ theme: _ }: PageProps) {
                       className="w-2 h-2 rounded-full"
                       style={{ background: '#00F0FF', boxShadow: '0 0 6px rgba(0,240,255,0.6)' }}
                       animate={{ opacity: [1, 0.3, 1] }}
-                      transition={{ duration: 1.5, repeat: Infinity }}
+                      transition={{ duration: 1.5, repeat: prefersReduced ? 0 : Infinity }}
                     />
                   )}
                 </motion.button>

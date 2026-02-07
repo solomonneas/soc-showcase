@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import * as Icons from 'lucide-react';
+import { getLucideIcon } from '@/components/shared/getLucideIcon';
 import { pipelineSteps } from '@/data/pipeline';
 import AnimatedDataFlow from '@/components/shared/AnimatedDataFlow';
 import type { PageProps } from '@/types';
@@ -79,9 +80,7 @@ export default function Pipeline({ theme: _ }: PageProps) {
 
           <div className="space-y-3">
             {pipelineSteps.map((step, i) => {
-              const IconComponent = (
-                Icons as Record<string, React.ComponentType<{ size?: number; className?: string }>>
-              )[step.icon] ?? Icons.Circle;
+              const IconComponent = getLucideIcon(step.icon, Icons.Circle) as React.ComponentType<{ size?: number; className?: string }>;
               const isExpanded = expandedStep === step.id;
 
               return (

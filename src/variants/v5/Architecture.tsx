@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { X } from 'lucide-react';
 import { architectureLayers, architectureEdges } from '@/data/architecture';
 import type { PageProps, ArchitectureNode } from '@/types';
@@ -9,6 +9,7 @@ const layerColors = ['#7C3AED', '#2563EB', '#10B981'];
 const layerLabels = ['AI Orchestration', 'MCP Bridge Layer', 'Security Tools'];
 
 export default function Architecture(_props: PageProps) {
+  const prefersReduced = useReducedMotion();
   const [selectedNode, setSelectedNode] = useState<ArchitectureNode | null>(null);
 
   // Flatten all nodes for lookup
@@ -129,7 +130,7 @@ export default function Architecture(_props: PageProps) {
                     strokeWidth={1.5}
                     markerEnd="url(#v5-arrow)"
                   />
-                  {edge.animated && (
+                  {edge.animated && !prefersReduced && (
                     <line
                       x1={from.cx} y1={from.cy}
                       x2={to.cx} y2={to.cy}

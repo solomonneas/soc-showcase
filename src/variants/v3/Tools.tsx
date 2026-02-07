@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import * as Icons from 'lucide-react';
+import { getLucideIcon } from '@/components/shared/getLucideIcon';
 import { tools, toolCategories } from '@/data/tools';
 import type { PageProps, Tool } from '@/types';
 
@@ -12,6 +13,7 @@ const statusConfig: Record<Tool['status'], { label: string; color: string }> = {
 };
 
 export default function Tools({ theme: _ }: PageProps) {
+  const prefersReduced = useReducedMotion();
   const [activeCategory, setActiveCategory] = useState('all');
 
   const filtered = activeCategory === 'all'
@@ -74,9 +76,7 @@ export default function Tools({ theme: _ }: PageProps) {
             className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
           >
             {filtered.map((tool, i) => {
-              const IconComponent = (
-                Icons as Record<string, React.ComponentType<{ size?: number; className?: string; style?: React.CSSProperties }>>
-              )[tool.icon] ?? Icons.Box;
+              const IconComponent = getLucideIcon(tool.icon) as React.ComponentType<{ size?: number; className?: string; style?: React.CSSProperties }>;
               const status = statusConfig[tool.status];
 
               return (
@@ -129,7 +129,7 @@ export default function Tools({ theme: _ }: PageProps) {
                         className="w-2 h-2 rounded-full"
                         style={{ background: status.color, boxShadow: `0 0 6px ${status.color}80` }}
                         animate={{ opacity: [1, 0.4, 1] }}
-                        transition={{ duration: 2, repeat: Infinity }}
+                        transition={{ duration: 2, repeat: prefersReduced ? 0 : Infinity }}
                       />
                       <span className="font-fira text-[9px] tracking-wider" style={{ color: status.color }}>
                         {status.label}

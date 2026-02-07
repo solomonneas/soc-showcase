@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { X, ChevronRight, Layers } from 'lucide-react';
 import ArchitectureGraph from '@/components/shared/ArchitectureGraph';
 import { architectureLayers, architectureEdges } from '@/data/architecture';
@@ -17,6 +17,7 @@ const layerDescriptions: Record<string, string> = {
 };
 
 export default function Architecture({ theme: _ }: PageProps) {
+  const prefersReduced = useReducedMotion();
   const [selectedNode, setSelectedNode] = useState<ArchitectureNode | null>(null);
 
   const getNodeEdges = (nodeId: string) =>
@@ -65,7 +66,7 @@ export default function Architecture({ theme: _ }: PageProps) {
                   className="w-2 h-2 rounded-full"
                   style={{ background: layer.color, boxShadow: `0 0 6px ${layer.color}80` }}
                   animate={{ opacity: [0.5, 1, 0.5] }}
-                  transition={{ duration: 2, repeat: Infinity, delay: Math.random() }}
+                  transition={{ duration: 2, repeat: prefersReduced ? 0 : Infinity, delay: Math.random() }}
                 />
                 <span className="font-audiowide text-xs text-[#E0F7FF]">{layer.label}</span>
                 <span className="font-fira text-[10px] text-[#5B7A8A]">({layer.nodes.length})</span>
@@ -238,7 +239,7 @@ export default function Architecture({ theme: _ }: PageProps) {
                       className="w-3 h-3 rounded-full"
                       style={{ background: layer.color, boxShadow: `0 0 8px ${layer.color}60` }}
                       animate={{ scale: [1, 1.2, 1] }}
-                      transition={{ duration: 2, repeat: Infinity, delay: i * 0.3 }}
+                      transition={{ duration: 2, repeat: prefersReduced ? 0 : Infinity, delay: i * 0.3 }}
                     />
                     <h3 className="font-audiowide text-sm text-[#E0F7FF]">{layer.label}</h3>
                   </div>

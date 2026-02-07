@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { Shield, Github, Linkedin, Globe, Mail, ExternalLink } from 'lucide-react';
 import { tools } from '@/data/tools';
 import type { PageProps } from '@/types';
@@ -26,6 +26,7 @@ const links = [
 ];
 
 export default function About({ theme: _ }: PageProps) {
+  const prefersReduced = useReducedMotion();
   return (
     <section className="min-h-screen flex flex-col">
       {/* Header */}
@@ -63,7 +64,7 @@ export default function About({ theme: _ }: PageProps) {
                     border: '1px solid rgba(0,240,255,0.2)',
                   }}
                   animate={{ boxShadow: ['0 0 10px rgba(0,240,255,0.1)', '0 0 20px rgba(0,240,255,0.2)', '0 0 10px rgba(0,240,255,0.1)'] }}
-                  transition={{ duration: 3, repeat: Infinity }}
+                  transition={{ duration: 3, repeat: prefersReduced ? 0 : Infinity }}
                 >
                   <Shield size={28} className="text-[#00F0FF]" style={{ filter: 'drop-shadow(0 0 6px rgba(0,240,255,0.5))' }} />
                 </motion.div>
@@ -163,7 +164,7 @@ export default function About({ theme: _ }: PageProps) {
                         boxShadow: `0 0 4px ${tool.status === 'production' ? '#39FF14' : '#00F0FF'}80`,
                       }}
                       animate={{ opacity: [1, 0.4, 1] }}
-                      transition={{ duration: 2, repeat: Infinity, delay: i * 0.3 }}
+                      transition={{ duration: 2, repeat: prefersReduced ? 0 : Infinity, delay: i * 0.3 }}
                     />
                     <span className="font-audiowide text-[11px] text-[#E0F7FF]">{tool.name}</span>
                     <span className="font-fira text-[8px] text-[#5B7A8A] ml-auto uppercase">
@@ -250,7 +251,7 @@ export default function About({ theme: _ }: PageProps) {
                         className="w-1.5 h-1.5 rounded-full"
                         style={{ background: item.color, boxShadow: `0 0 4px ${item.color}80` }}
                         animate={{ opacity: [1, 0.4, 1] }}
-                        transition={{ duration: 2.5, repeat: Infinity, delay: i * 0.2 }}
+                        transition={{ duration: 2.5, repeat: prefersReduced ? 0 : Infinity, delay: i * 0.2 }}
                       />
                       <span
                         className="font-fira text-[10px] tracking-wider"

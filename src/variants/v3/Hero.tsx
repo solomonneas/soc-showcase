@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { Shield, Server, Activity, Target, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { architectureLayers } from '@/data/architecture';
@@ -21,6 +21,7 @@ const statusItems = [
 ];
 
 export default function Hero({ theme: _ }: PageProps) {
+  const prefersReduced = useReducedMotion();
   const [bootStage, setBootStage] = useState(0);
   const [bootComplete, setBootComplete] = useState(false);
 
@@ -215,13 +216,13 @@ export default function Hero({ theme: _ }: PageProps) {
                 x1="10%" y1="33%" x2="90%" y2="33%"
                 stroke="#00F0FF" strokeWidth="0.5" strokeDasharray="4 4"
                 animate={{ strokeDashoffset: [0, -16] }}
-                transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
+                transition={{ duration: 2, repeat: prefersReduced ? 0 : Infinity, ease: 'linear' }}
               />
               <motion.line
                 x1="10%" y1="66%" x2="90%" y2="66%"
                 stroke="#00F0FF" strokeWidth="0.5" strokeDasharray="4 4"
                 animate={{ strokeDashoffset: [0, -16] }}
-                transition={{ duration: 2, repeat: Infinity, ease: 'linear', delay: 0.5 }}
+                transition={{ duration: 2, repeat: prefersReduced ? 0 : Infinity, ease: 'linear', delay: 0.5 }}
               />
             </svg>
           </motion.div>

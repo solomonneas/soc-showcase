@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { pipelineSteps } from '@/data/pipeline';
 import type { PageProps } from '@/types';
 import './styles.css';
@@ -11,6 +11,7 @@ const fade = {
 };
 
 export default function Pipeline(_props: PageProps) {
+  const prefersReduced = useReducedMotion();
   const [activeStep, setActiveStep] = useState(0);
 
   // Slow, deliberate animation — 3 seconds per step
@@ -94,7 +95,7 @@ export default function Pipeline(_props: PageProps) {
                       strokeWidth={0.75}
                       initial={{ opacity: 0 }}
                       animate={{ opacity: [0.2, 0.5, 0.2] }}
-                      transition={{ duration: 2, repeat: Infinity }}
+                      transition={{ duration: 2, repeat: prefersReduced ? 0 : Infinity }}
                     />
                   )}
 

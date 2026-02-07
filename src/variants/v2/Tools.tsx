@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import * as Icons from 'lucide-react';
+import { getLucideIcon } from '@/components/shared/getLucideIcon';
 import { tools, toolCategories } from '@/data/tools';
 import type { PageProps, Tool } from '@/types';
 
@@ -73,9 +74,7 @@ export default function Tools({ theme: _ }: PageProps) {
           <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {filtered.map((tool, i) => {
               const status = statusConfig[tool.status];
-              const IconComponent = (
-                Icons as Record<string, React.ComponentType<{ size?: number; className?: string }>>
-              )[tool.icon] ?? Icons.Box;
+              const IconComponent = getLucideIcon(tool.icon) as React.ComponentType<{ size?: number; className?: string }>;
 
               return (
                 <motion.div

@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import * as Icons from 'lucide-react';
+import { getLucideIcon } from '@/components/shared/getLucideIcon';
 import type { Tool } from '@/types';
 
 interface ToolCardProps {
@@ -20,7 +21,7 @@ export default function ToolCard({ tool, primaryColor, className = '' }: ToolCar
   const iconColor = primaryColor ?? tool.color;
 
   // Dynamic icon lookup
-  const IconComponent = (Icons as Record<string, React.ComponentType<{ size?: number; color?: string; className?: string }>>)[tool.icon] ?? Icons.Box;
+  const IconComponent = getLucideIcon(tool.icon) as React.ComponentType<{ size?: number; color?: string; className?: string }>;
 
   return (
     <motion.div

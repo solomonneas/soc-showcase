@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import * as Icons from 'lucide-react';
+import { getLucideIcon } from '@/components/shared/getLucideIcon';
 import { pipelineSteps } from '@/data/pipeline';
 import AnimatedDataFlow from '@/components/shared/AnimatedDataFlow';
 import type { PageProps } from '@/types';
 
 export default function Pipeline({ theme: _ }: PageProps) {
+  const prefersReduced = useReducedMotion();
   const [activeStep, setActiveStep] = useState<number | null>(null);
   const [autoStep, setAutoStep] = useState(0);
 
@@ -61,7 +63,7 @@ export default function Pipeline({ theme: _ }: PageProps) {
             <motion.span
               className="font-jetbrains text-[10px] text-cyan-500"
               animate={{ opacity: [1, 0.4, 1] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
+              transition={{ duration: 1.5, repeat: prefersReduced ? 0 : Infinity }}
             >
               ● STREAMING
             </motion.span>
@@ -76,9 +78,7 @@ export default function Pipeline({ theme: _ }: PageProps) {
         {/* Pipeline stages */}
         <div className="grid gap-3 md:grid-cols-2">
           {pipelineSteps.map((step, i) => {
-            const IconComponent = (
-              Icons as Record<string, React.ComponentType<{ size?: number; className?: string; style?: React.CSSProperties }>>
-            )[step.icon] ?? Icons.Circle;
+            const IconComponent = getLucideIcon(step.icon, Icons.Circle) as React.ComponentType<{ size?: number; className?: string; style?: React.CSSProperties }>;
             const isHighlighted = i === highlighted;
 
             return (
@@ -132,7 +132,7 @@ export default function Pipeline({ theme: _ }: PageProps) {
                         ? { opacity: [1, 0.4, 1] }
                         : { opacity: 0.5 }
                     }
-                    transition={{ duration: 1.5, repeat: Infinity }}
+                    transition={{ duration: 1.5, repeat: prefersReduced ? 0 : Infinity }}
                   />
                 </div>
 

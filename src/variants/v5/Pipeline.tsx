@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, useMemo } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, useReducedMotion } from 'framer-motion';
 import * as Icons from 'lucide-react';
+import { getLucideIcon } from '@/components/shared/getLucideIcon';
 import { pipelineSteps } from '@/data/pipeline';
 import type { PageProps } from '@/types';
 import './styles.css';
@@ -67,6 +68,7 @@ function getPointOnPath(t: number, nodes: { x: number; y: number }[]): { x: numb
 }
 
 export default function Pipeline(_props: PageProps) {
+  const prefersReduced = useReducedMotion();
   const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { once: true, margin: '-100px' });
   const [activeStep, setActiveStep] = useState(0);
@@ -74,12 +76,12 @@ export default function Pipeline(_props: PageProps) {
 
   // Auto-advance active step
   useEffect(() => {
-    if (!isInView) return;
+    if (!isInView || prefersReduced) return;
     const interval = setInterval(() => {
       setActiveStep((prev) => (prev + 1) % pipelineSteps.length);
     }, 2000);
     return () => clearInterval(interval);
-  }, [isInView]);
+  }, [isInView, prefersReduced]);
 
   // SVG dimensions
   const svgW = 1100;
@@ -106,7 +108,7 @@ export default function Pipeline(_props: PageProps) {
     }, '');
   }, [nodes]);
 
-  const particles = usePipelineParticles(8, isInView);
+  const particles = usePipelineParticles(8, isInView && !prefersReduced);
 
   return (
     <section
@@ -194,12 +196,14 @@ export default function Pipeline(_props: PageProps) {
               strokeDasharray="4 8"
               opacity="0.4"
             >
-              <animate
-                attributeName="stroke-dashoffset"
-                values="0;-24"
-                dur="1.5s"
-                repeatCount="indefinite"
-              />
+              {!prefersReduced && (
+                <animate
+                  attributeName="stroke-dashoffset"
+                  values="0;-24"
+                  dur="1.5s"
+                  repeatCount="indefinite"
+                />
+              )}
             </path>
 
             {/* Particles */}
@@ -234,7 +238,7 @@ export default function Pipeline(_props: PageProps) {
                   onClick={() => setActiveStep(i)}
                 >
                   {/* Pulse ring */}
-                  {isActive && (
+                  {isActive && !prefersReduced && (
                     <>
                       <circle cx={node.x} cy={node.y} r={r + 12} fill="none" stroke="#7C3AED" strokeWidth="1" opacity="0.2">
                         <animate attributeName="r" values={`${r + 4};${r + 16};${r + 4}`} dur="2s" repeatCount="indefinite" />
@@ -316,7 +320,7 @@ export default function Pipeline(_props: PageProps) {
             <div className="p-3 rounded-xl" style={{ background: 'linear-gradient(135deg, rgba(124,58,237,0.12), rgba(37,99,235,0.08))' }}>
               {(() => {
                 const step = pipelineSteps[activeStep]!;
-                const Icon = (Icons as Record<string, React.ComponentType<{ size?: number; className?: string }>>)[step.icon] ?? Icons.Circle;
+                const Icon = getLucideIcon(step.icon, Icons.Circle) as React.ComponentType<{ size?: number; className?: string }>;
                 return <Icon size={24} className="text-[#7C3AED]" />;
               })()}
             </div>
@@ -366,7 +370,7 @@ export default function Pipeline(_props: PageProps) {
         {/* Step grid for quick navigation */}
         <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
           {pipelineSteps.map((step, i) => {
-            const Icon = (Icons as Record<string, React.ComponentType<{ size?: number; className?: string }>>)[step.icon] ?? Icons.Circle;
+            const Icon = getLucideIcon(step.icon, Icons.Circle) as React.ComponentType<{ size?: number; className?: string }>;
             const isActive = i === activeStep;
 
             return (

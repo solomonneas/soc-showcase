@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import {
   Shield,
   Server,
@@ -55,6 +55,7 @@ const systems = [
 ];
 
 export default function Hero({ theme: _ }: PageProps) {
+  const prefersReduced = useReducedMotion();
   const mcpCount = useCountUp(7, 1800, 400);
   const toolCount = useCountUp(9, 1800, 600);
   const cveCount = useCountUp(580, 2200, 800);
@@ -173,7 +174,7 @@ export default function Hero({ theme: _ }: PageProps) {
                       isOnline ? 'bg-green-500 shadow-[0_0_6px_rgba(34,197,94,0.6)]' : 'bg-amber-400 shadow-[0_0_6px_rgba(245,158,11,0.6)]'
                     }`}
                     animate={{ opacity: [1, 0.4, 1] }}
-                    transition={{ duration: 2, repeat: Infinity, delay: i * 0.2 }}
+                    transition={{ duration: 2, repeat: prefersReduced ? 0 : Infinity, delay: i * 0.2 }}
                   />
                 </motion.div>
               );
