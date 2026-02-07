@@ -106,12 +106,17 @@ export default function VariantPicker() {
                 </div>
 
                 {/* Enter link */}
-                <div
-                  className="flex items-center gap-2 text-sm font-medium group-hover:gap-3 transition-all"
-                  style={{ color: theme.primaryColor }}
-                >
-                  <span>Explore variant</span>
-                  <ArrowRight size={16} />
+                <div className="flex items-center justify-between">
+                  <div
+                    className="flex items-center gap-2 text-sm font-medium group-hover:gap-3 transition-all"
+                    style={{ color: theme.primaryColor }}
+                  >
+                    <span>Explore variant</span>
+                    <ArrowRight size={16} />
+                  </div>
+                  <kbd className="text-xs font-mono px-2 py-0.5 rounded bg-white/5 border border-white/10 text-gray-600 group-hover:text-gray-400 transition-colors">
+                    {theme.id}
+                  </kbd>
                 </div>
               </Link>
             </motion.div>

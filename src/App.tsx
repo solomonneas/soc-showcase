@@ -9,6 +9,7 @@ import V4Layout from '@/variants/v4/Layout';
 import V5Layout from '@/variants/v5/Layout';
 import DocsPage from '@/pages/DocsPage';
 import NotFound from '@/pages/NotFound';
+import KeyboardHints from '@/components/shared/KeyboardHints';
 
 function VariantKeyboardNav() {
   const navigate = useNavigate();
@@ -29,6 +30,7 @@ export default function App() {
   return (
     <>
       <VariantKeyboardNav />
+      <KeyboardHints />
       <Routes>
         <Route path="/" element={<VariantPicker />} />
         <Route path="/1/*" element={<V1Layout />} />
