@@ -1,7 +1,7 @@
 import { Routes, Route, Link, useLocation } from 'react-router-dom';
 import { Shield, Menu, X, Radio, Wifi, Clock } from 'lucide-react';
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { variantThemes } from '@/data/themes';
 import Hero from './Hero';
 import Architecture from './Architecture';
@@ -37,6 +37,7 @@ function StatusClock() {
 
 export default function V1Layout() {
   const location = useLocation();
+  const prefersReduced = useReducedMotion();
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const isActive = (path: string) => {
@@ -63,7 +64,7 @@ export default function V1Layout() {
               <motion.div
                 className="absolute -inset-1 rounded-full border border-cyan-400/30"
                 animate={{ scale: [1, 1.3, 1], opacity: [0.3, 0, 0.3] }}
-                transition={{ duration: 2, repeat: Infinity }}
+                transition={{ duration: 2, repeat: prefersReduced ? 0 : Infinity }}
               />
             </div>
             <span className="font-chakra font-bold text-sm tracking-wider uppercase text-cyan-400">
@@ -105,6 +106,9 @@ export default function V1Layout() {
           <button
             className="md:hidden text-slate-400 p-1"
             onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label={mobileOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            aria-expanded={mobileOpen}
+            aria-controls="v1-mobile-menu"
           >
             {mobileOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
@@ -114,6 +118,9 @@ export default function V1Layout() {
         <AnimatePresence>
           {mobileOpen && (
             <motion.div
+              id="v1-mobile-menu"
+              role="navigation"
+              aria-label="Mobile navigation"
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: 'auto', opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}

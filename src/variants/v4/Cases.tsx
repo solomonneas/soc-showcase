@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
-import { caseStudies } from '../../data/cases';
-import type { PageProps } from '../../types';
+import { caseStudies } from '@/data/cases';
+import type { PageProps } from '@/types';
 import './styles.css';
 
 const fade = {

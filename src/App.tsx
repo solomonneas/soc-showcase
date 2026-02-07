@@ -5,6 +5,7 @@ import V2Layout from '@/variants/v2/Layout';
 import V3Layout from '@/variants/v3/Layout';
 import V4Layout from '@/variants/v4/Layout';
 import V5Layout from '@/variants/v5/Layout';
+import NotFound from '@/pages/NotFound';
 
 export default function App() {
   return (
@@ -15,6 +16,7 @@ export default function App() {
       <Route path="/3/*" element={<V3Layout />} />
       <Route path="/4/*" element={<V4Layout />} />
       <Route path="/5/*" element={<V5Layout />} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 }

@@ -74,6 +74,9 @@ export default function V2Layout() {
           <button
             className="md:hidden text-[#64748B] p-1"
             onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label={mobileOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            aria-expanded={mobileOpen}
+            aria-controls="v2-mobile-menu"
           >
             {mobileOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
@@ -83,6 +86,9 @@ export default function V2Layout() {
         <AnimatePresence>
           {mobileOpen && (
             <motion.div
+              id="v2-mobile-menu"
+              role="navigation"
+              aria-label="Mobile navigation"
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: 'auto', opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}

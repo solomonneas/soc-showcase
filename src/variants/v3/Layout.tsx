@@ -1,7 +1,7 @@
 import { Routes, Route, Link, useLocation } from 'react-router-dom';
 import { Shield, Menu, X } from 'lucide-react';
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { variantThemes } from '@/data/themes';
 import Hero from './Hero';
 import Architecture from './Architecture';
@@ -43,6 +43,7 @@ function HudStatusBar() {
 
 export default function V3Layout() {
   const location = useLocation();
+  const prefersReduced = useReducedMotion();
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const isActive = (path: string) => {
@@ -64,7 +65,7 @@ export default function V3Layout() {
           <Link to="/3" className="flex items-center gap-2.5">
             <motion.div
               animate={{ rotate: [0, 360] }}
-              transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+              transition={{ duration: 20, repeat: prefersReduced ? 0 : Infinity, ease: 'linear' }}
             >
               <Shield size={18} className="text-[#00F0FF]" style={{ filter: 'drop-shadow(0 0 6px rgba(0,240,255,0.5))' }} />
             </motion.div>
@@ -97,6 +98,9 @@ export default function V3Layout() {
           <button
             className="md:hidden text-[#5B7A8A] hover:text-[#00F0FF] transition-colors"
             onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label={mobileOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            aria-expanded={mobileOpen}
+            aria-controls="v3-mobile-menu"
           >
             {mobileOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
@@ -106,6 +110,9 @@ export default function V3Layout() {
         <AnimatePresence>
           {mobileOpen && (
             <motion.div
+              id="v3-mobile-menu"
+              role="navigation"
+              aria-label="Mobile navigation"
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: 'auto', opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}

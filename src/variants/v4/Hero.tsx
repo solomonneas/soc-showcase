@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
-import { architectureLayers } from '../../data/architecture';
-import type { PageProps } from '../../types';
+import { architectureLayers } from '@/data/architecture';
+import type { PageProps } from '@/types';
 import './styles.css';
 
 const fade = {

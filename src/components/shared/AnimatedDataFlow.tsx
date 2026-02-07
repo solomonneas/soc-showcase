@@ -1,12 +1,11 @@
-import { useEffect, useRef, useState } from 'react';
-import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
+import { motion, useReducedMotion } from 'framer-motion';
 import { pipelineSteps } from '@/data/pipeline';
 
 interface AnimatedDataFlowProps {
   primaryColor?: string;
   secondaryColor?: string;
   accentColor?: string;
-  bgColor?: string;
   className?: string;
 }
 
@@ -22,9 +21,8 @@ export default function AnimatedDataFlow({
   accentColor = '#ff00aa',
   className = '',
 }: AnimatedDataFlowProps) {
-  const svgRef = useRef<SVGSVGElement>(null);
+  const prefersReduced = useReducedMotion();
   const [activeStep, setActiveStep] = useState(0);
-  const [_hoveredStep, setHoveredStep] = useState<number | null>(null);
 
   const width = 900;
   const height = 200;
@@ -40,11 +38,12 @@ export default function AnimatedDataFlow({
 
   // Animate the active step
   useEffect(() => {
+    if (prefersReduced) return;
     const interval = setInterval(() => {
       setActiveStep((prev) => (prev + 1) % pipelineSteps.length);
     }, 1500);
     return () => clearInterval(interval);
-  }, []);
+  }, [prefersReduced]);
 
   // Build path string through all nodes
   const pathData = nodes.reduce((acc, node, i) => {
@@ -57,7 +56,6 @@ export default function AnimatedDataFlow({
   return (
     <div className={`relative ${className}`}>
       <svg
-        ref={svgRef}
         viewBox={`0 0 ${width} ${height}`}
         className="w-full h-auto"
         style={{ maxHeight: '200px' }}
@@ -137,8 +135,6 @@ export default function AnimatedDataFlow({
           return (
             <g
               key={node.step.id}
-              onMouseEnter={() => setHoveredStep(i)}
-              onMouseLeave={() => setHoveredStep(null)}
               style={{ cursor: 'pointer' }}
             >
               {/* Node glow ring */}
@@ -152,7 +148,7 @@ export default function AnimatedDataFlow({
                   strokeWidth="1"
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: [0.3, 0.8, 0.3], scale: [0.9, 1.1, 0.9] }}
-                  transition={{ duration: 2, repeat: Infinity }}
+                  transition={{ duration: 2, repeat: prefersReduced ? 0 : Infinity }}
                 />
               )}
 
@@ -166,7 +162,7 @@ export default function AnimatedDataFlow({
                 strokeWidth={isActive ? 2.5 : 1.5}
                 filter={isActive ? 'url(#glow)' : undefined}
                 animate={isActive ? { scale: [1, 1.05, 1] } : {}}
-                transition={{ duration: 1.5, repeat: Infinity }}
+                transition={{ duration: 1.5, repeat: prefersReduced ? 0 : Infinity }}
               />
 
               {/* Node number */}

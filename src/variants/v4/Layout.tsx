@@ -1,5 +1,5 @@
 import { Routes, Route, Link, useLocation } from 'react-router-dom';
-import { variantThemes } from '../../data/themes';
+import { variantThemes } from '@/data/themes';
 import Hero from './Hero';
 import Architecture from './Architecture';
 import Tools from './Tools';

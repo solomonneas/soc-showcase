@@ -2,8 +2,8 @@ import { useEffect, useState, useRef } from 'react';
 import { motion, useInView, useMotionValue, useTransform, animate } from 'framer-motion';
 import { ArrowRight, Github, Shield, Crosshair, BookOpen, Globe, Brain, Target, Activity, Radar } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { architectureLayers } from '../../data/architecture';
-import type { PageProps } from '../../types';
+import { architectureLayers } from '@/data/architecture';
+import type { PageProps } from '@/types';
 import './styles.css';
 
 /* ---- Typing effect hook ---- */

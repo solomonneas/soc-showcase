@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, ChevronRight } from 'lucide-react';
-import { architectureLayers, architectureEdges } from '../../data/architecture';
-import type { PageProps, ArchitectureNode } from '../../types';
+import { architectureLayers, architectureEdges } from '@/data/architecture';
+import type { PageProps, ArchitectureNode } from '@/types';
 import './styles.css';
 
 const fade = {

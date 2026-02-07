@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import * as Icons from 'lucide-react';
-import { tools, toolCategories } from '../../data/tools';
-import type { PageProps, Tool } from '../../types';
+import { tools, toolCategories } from '@/data/tools';
+import type { PageProps, Tool } from '@/types';
 import './styles.css';
 
 const statusConfig: Record<Tool['status'], { label: string; dotColor: string }> = {

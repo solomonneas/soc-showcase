@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { architectureLayers, architectureEdges } from '@/data/architecture';
 import type { ArchitectureNode } from '@/types';
 
@@ -16,6 +16,7 @@ export default function ArchitectureGraph({
   accentColor = '#00ff88',
   className = '',
 }: ArchitectureGraphProps) {
+  const prefersReduced = useReducedMotion();
   const [hoveredNode, setHoveredNode] = useState<string | null>(null);
 
   const width = 800;
@@ -139,7 +140,7 @@ export default function ArchitectureGraph({
                     ? { strokeDashoffset: [0, -20] }
                     : {}
                 }
-                transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
+                transition={{ duration: 1, repeat: prefersReduced ? 0 : Infinity, ease: 'linear' }}
               />
               {edge.label && isHighlighted && (
                 <text

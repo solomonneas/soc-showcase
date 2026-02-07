@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { pipelineSteps } from '../../data/pipeline';
-import type { PageProps } from '../../types';
+import { pipelineSteps } from '@/data/pipeline';
+import type { PageProps } from '@/types';
 import './styles.css';
 
 const fade = {

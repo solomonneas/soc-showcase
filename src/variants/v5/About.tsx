@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Github, ExternalLink, Shield, Server, Code2, Brain, Network, Lock, Terminal, Cpu } from 'lucide-react';
-import type { PageProps } from '../../types';
+import type { PageProps } from '@/types';
 import './styles.css';
 
 const skills = [

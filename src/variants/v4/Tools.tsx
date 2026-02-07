@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
-import { tools } from '../../data/tools';
-import type { PageProps } from '../../types';
+import { tools } from '@/data/tools';
+import type { PageProps } from '@/types';
 import './styles.css';
 
 const fade = {

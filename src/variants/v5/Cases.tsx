@@ -1,8 +1,8 @@
 import { useRef, useEffect, useState } from 'react';
 import { motion, useInView, useMotionValue, useTransform, animate } from 'framer-motion';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
-import { caseStudies } from '../../data/cases';
-import type { PageProps, Metric, CaseStudy, TimelineStep } from '../../types';
+import { caseStudies } from '@/data/cases';
+import type { PageProps, Metric, CaseStudy, TimelineStep } from '@/types';
 import './styles.css';
 
 /* ---- Animated metric value ---- */

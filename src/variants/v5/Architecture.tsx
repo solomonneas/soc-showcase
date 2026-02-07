@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
-import { architectureLayers, architectureEdges } from '../../data/architecture';
-import type { PageProps, ArchitectureNode } from '../../types';
+import { architectureLayers, architectureEdges } from '@/data/architecture';
+import type { PageProps, ArchitectureNode } from '@/types';
 import './styles.css';
 
 const layerColors = ['#7C3AED', '#2563EB', '#10B981'];

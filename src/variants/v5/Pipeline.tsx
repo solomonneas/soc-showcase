@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState, useMemo } from 'react';
 import { motion, useInView } from 'framer-motion';
 import * as Icons from 'lucide-react';
-import { pipelineSteps } from '../../data/pipeline';
-import type { PageProps } from '../../types';
+import { pipelineSteps } from '@/data/pipeline';
+import type { PageProps } from '@/types';
 import './styles.css';
 
 /* ---- Particle system for the cinematic flow ---- */

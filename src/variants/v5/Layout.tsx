@@ -105,6 +105,9 @@ export default function V5Layout() {
           <button
             className="md:hidden text-[#71717A] hover:text-[#A1A1AA] transition-colors p-1"
             onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label={mobileOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            aria-expanded={mobileOpen}
+            aria-controls="v5-mobile-menu"
           >
             {mobileOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
@@ -114,6 +117,9 @@ export default function V5Layout() {
         <AnimatePresence>
           {mobileOpen && (
             <motion.div
+              id="v5-mobile-menu"
+              role="navigation"
+              aria-label="Mobile navigation"
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: 'auto', opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
