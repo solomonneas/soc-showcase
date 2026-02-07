@@ -1,4 +1,5 @@
-import { Routes, Route } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import VariantPicker from '@/components/shared/VariantPicker';
 import GuidedTour from '@/components/shared/GuidedTour';
 import V1Layout from '@/variants/v1/Layout';
@@ -9,9 +10,25 @@ import V5Layout from '@/variants/v5/Layout';
 import DocsPage from '@/pages/DocsPage';
 import NotFound from '@/pages/NotFound';
 
+function VariantKeyboardNav() {
+  const navigate = useNavigate();
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
+      const num = parseInt(e.key);
+      if (num >= 1 && num <= 5) navigate(`/${num}`);
+      else if (e.key === 'Escape' || e.key === '0') navigate('/');
+    };
+    window.addEventListener('keydown', handleKey);
+    return () => window.removeEventListener('keydown', handleKey);
+  }, [navigate]);
+  return null;
+}
+
 export default function App() {
   return (
     <>
+      <VariantKeyboardNav />
       <Routes>
         <Route path="/" element={<VariantPicker />} />
         <Route path="/1/*" element={<V1Layout />} />
