@@ -20,6 +20,7 @@ const navLinks = [
   { path: '/1/cases', label: 'Operations' },
   { path: '/1/pipeline', label: 'Pipeline' },
   { path: '/1/about', label: 'Operator' },
+  { path: '/1/docs', label: 'Intel' },
 ];
 
 function StatusClock() {

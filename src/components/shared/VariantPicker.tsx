@@ -33,7 +33,7 @@ export default function VariantPicker() {
       </header>
 
       {/* Variant cards */}
-      <main className="flex-1 px-6 py-12">
+      <main className="flex-1 px-6 py-12" data-tour="variant-picker">
         <div className="max-w-4xl mx-auto grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {variantThemes.map((theme, index) => (
             <motion.div

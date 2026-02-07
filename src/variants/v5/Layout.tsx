@@ -20,6 +20,7 @@ const navLinks = [
   { path: '/5/cases', label: 'Cases' },
   { path: '/5/pipeline', label: 'Pipeline' },
   { path: '/5/about', label: 'About' },
+  { path: '/5/docs', label: 'Docs' },
 ];
 
 export default function V5Layout() {

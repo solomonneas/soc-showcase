@@ -65,6 +65,13 @@ export default function V4Layout() {
               </Link>
             ))}
 
+            <Link
+              to="/4/docs"
+              className="paper-nav-link"
+            >
+              Docs
+            </Link>
+
             {/* All Variants link */}
             <Link
               to="/"

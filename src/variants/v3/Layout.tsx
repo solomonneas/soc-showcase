@@ -20,6 +20,7 @@ const navLinks = [
   { path: '/3/cases', label: 'Cases' },
   { path: '/3/pipeline', label: 'Pipeline' },
   { path: '/3/about', label: 'About' },
+  { path: '/3/docs', label: 'Docs' },
 ];
 
 function HudStatusBar() {
