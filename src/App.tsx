@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import VariantPicker from '@/components/shared/VariantPicker';
 import GuidedTour from '@/components/shared/GuidedTour';
 import V1Layout from '@/variants/v1/Layout';
@@ -10,6 +10,17 @@ import V5Layout from '@/variants/v5/Layout';
 import DocsPage from '@/pages/DocsPage';
 import NotFound from '@/pages/NotFound';
 import KeyboardHints from '@/components/shared/KeyboardHints';
+import VariantSettings from '@/components/shared/VariantSettings';
+import { useDefaultVariant } from '@/hooks/useDefaultVariant';
+
+const APP_ID = 'soc-showcase';
+const VARIANT_NAMES = [
+  'Mission Control',
+  'Cyber Command',
+  'Threat Matrix',
+  'Neural Grid',
+  'Dark Protocol',
+];
 
 function VariantKeyboardNav() {
   const navigate = useNavigate();
@@ -26,11 +37,36 @@ function VariantKeyboardNav() {
   return null;
 }
 
+function DefaultVariantRedirect({ defaultVariant }: { defaultVariant: number | null }) {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.pathname === '/' && defaultVariant) {
+      navigate(`/${defaultVariant}`, { replace: true });
+    }
+  }, [location.pathname, defaultVariant, navigate]);
+
+  return null;
+}
+
 export default function App() {
+  const location = useLocation();
+  const { defaultVariant, setDefaultVariant } = useDefaultVariant(APP_ID);
+  const variantMatch = location.pathname.match(/^\/([1-5])/);
+  const currentVariant = variantMatch ? parseInt(variantMatch[1], 10) : null;
+
   return (
     <>
       <VariantKeyboardNav />
+      <DefaultVariantRedirect defaultVariant={defaultVariant} />
       <KeyboardHints />
+      <VariantSettings
+        currentVariant={currentVariant}
+        defaultVariant={defaultVariant}
+        onSetDefault={setDefaultVariant}
+        variantNames={VARIANT_NAMES}
+      />
       <Routes>
         <Route path="/" element={<VariantPicker />} />
         <Route path="/1/*" element={<V1Layout />} />
