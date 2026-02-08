@@ -37,10 +37,9 @@ function VariantKeyboardNav() {
   return null;
 }
 
-function DefaultVariantRedirect() {
+function DefaultVariantRedirect({ defaultVariant }: { defaultVariant: number | null }) {
   const navigate = useNavigate();
   const location = useLocation();
-  const { defaultVariant } = useDefaultVariant(APP_ID);
 
   useEffect(() => {
     if (location.pathname === '/' && defaultVariant) {
@@ -60,7 +59,7 @@ export default function App() {
   return (
     <>
       <VariantKeyboardNav />
-      <DefaultVariantRedirect />
+      <DefaultVariantRedirect defaultVariant={defaultVariant} />
       <KeyboardHints />
       <VariantSettings
         currentVariant={currentVariant}
