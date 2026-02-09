@@ -1,6 +1,6 @@
-import { useState, useMemo } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
-import { X, ChevronRight, Layers } from 'lucide-react';
+import { X, ChevronRight } from 'lucide-react';
 import ArchitectureGraph from '@/components/shared/ArchitectureGraph';
 import { architectureLayers, architectureEdges } from '@/data/architecture';
 import type { PageProps, ArchitectureNode } from '@/types';

@@ -54,7 +54,7 @@ export default function App() {
   const location = useLocation();
   const { defaultVariant, setDefaultVariant } = useDefaultVariant(APP_ID);
   const variantMatch = location.pathname.match(/^\/([1-5])/);
-  const currentVariant = variantMatch ? parseInt(variantMatch[1], 10) : null;
+  const currentVariant = variantMatch?.[1] ? parseInt(variantMatch[1], 10) : null;
 
   return (
     <>

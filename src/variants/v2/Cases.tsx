@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { CheckCircle, Clock, Circle, FileText, TrendingDown, ArrowRight } from 'lucide-react';
+import { CheckCircle, Clock, Circle, FileText, TrendingDown } from 'lucide-react';
 import { caseStudies } from '@/data/cases';
 import { tools } from '@/data/tools';
 import type { PageProps, TimelineStep } from '@/types';
