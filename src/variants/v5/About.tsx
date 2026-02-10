@@ -68,7 +68,7 @@ export default function About(_props: PageProps) {
         >
           <p className="font-dm-sans text-[#A1A1AA] leading-relaxed text-lg mb-4">
             I specialize in integrating AI capabilities into Security Operations Center workflows.
-            The SOC Stack represents my approach to the challenge every security team faces: too many
+            The S³ Stack represents my approach to the challenge every security team faces: too many
             alerts, too little context, and not enough hours in the day.
           </p>
           <p className="font-dm-sans text-[#A1A1AA] leading-relaxed text-lg mb-4">
@@ -171,7 +171,7 @@ export default function About(_props: PageProps) {
           className="text-center mt-16"
         >
           <p className="font-jetbrains text-xs text-[#3F3F46]">
-            SOC Stack · Built with React, TypeScript & Tailwind · Open Source
+            S³ Stack · Built with React, TypeScript & Tailwind · Open Source
           </p>
         </motion.div>
       </div>

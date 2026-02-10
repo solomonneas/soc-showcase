@@ -18,7 +18,7 @@ export default function Cases(_props: PageProps) {
       </motion.h2>
 
       <motion.p {...fade} transition={{ delay: 0.05, duration: 0.5 }}>
-        To evaluate the practical efficacy of the SOC Stack architecture, we present
+        To evaluate the practical efficacy of the S³ Stack architecture, we present
         three case studies drawn from production deployments. Each case follows a
         structured methodology: we describe the initial challenge, the tools and
         procedures applied, quantitative outcomes, and a timeline of key events. Metrics
@@ -233,7 +233,7 @@ export default function Cases(_props: PageProps) {
       <motion.div {...fade} transition={{ delay: 0.3, duration: 0.5 }}>
         <h3 className="paper-heading subsection-heading">4.4 Summary of Findings</h3>
         <p>
-          Across all three case studies, the AI-augmented SOC Stack demonstrated
+          Across all three case studies, the AI-augmented S³ Stack demonstrated
           significant improvements in operational efficiency. Vulnerability remediation
           time decreased by over 60%, compliance enforcement achieved full coverage, and
           patch management cadence improved by 67%. These results support the hypothesis

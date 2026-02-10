@@ -50,7 +50,7 @@ export default function Architecture(_props: PageProps) {
       </motion.h2>
 
       <motion.p {...fade} transition={{ delay: 0.05, duration: 0.5 }}>
-        The SOC Stack follows a three-layer architecture designed to separate concerns
+        The S³ Stack follows a three-layer architecture designed to separate concerns
         between AI reasoning, protocol bridging, and security tool operation. This
         separation ensures that each layer can be developed, tested, and upgraded
         independently. Figure 2 presents the full architecture graph with inter-layer
