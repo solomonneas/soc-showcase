@@ -6,7 +6,7 @@ import { architectureLayers } from '@/data/architecture';
 import type { PageProps } from '@/types';
 
 const bootLines = [
-  { text: '> INITIALIZING SOC INTERFACE...', delay: 0 },
+  { text: '> INITIALIZING SOLOMON\'S S³ STACK...', delay: 0 },
   { text: '> LOADING ARCHITECTURE MODULES...', delay: 400 },
   { text: '> CONNECTING MCP SERVERS [7/7]...', delay: 800 },
   { text: '> THREAT DETECTION ENGINES: ONLINE', delay: 1200 },
@@ -103,7 +103,7 @@ export default function Hero({ theme: _ }: PageProps) {
             className="flex items-center gap-3 mb-8"
           >
             <div className="w-10 h-px" style={{ background: 'linear-gradient(90deg, transparent, #00F0FF)' }} />
-            <span className="v3-section-label">Threat Operations Interface</span>
+            <span className="v3-section-label">Threat Operations Interface — Built by Solomon Neas</span>
           </motion.div>
 
           {/* Title */}
@@ -113,10 +113,10 @@ export default function Hero({ theme: _ }: PageProps) {
             transition={{ delay: 0.4, duration: 0.6 }}
             className="font-audiowide text-4xl sm:text-5xl md:text-6xl lg:text-7xl uppercase tracking-wider leading-[1.1] mb-6"
           >
-            <span className="text-[#E0F7FF]">AI-Powered</span>
+            <span className="text-[#E0F7FF]">Solomon's</span>
             <br />
             <span className="v3-chromatic" style={{ color: '#00F0FF' }}>
-              Security Ops
+              S³ Stack
             </span>
           </motion.h1>
 

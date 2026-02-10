@@ -35,10 +35,10 @@ export default function About({ theme: _ }: PageProps) {
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}>
             <div className="v3-section-label mb-2">// About</div>
             <h1 className="font-audiowide text-3xl md:text-4xl text-[#E0F7FF] mb-3 v3-chromatic-subtle">
-              Operator Profile
+              Operator Profile — Solomon's S³ Stack
             </h1>
             <p className="font-rajdhani text-[#5B7A8A] max-w-2xl leading-relaxed">
-              Security operations engineer and builder.
+              Security operations engineer and builder of Solomon's S³ Stack.
             </p>
           </motion.div>
         </div>
@@ -75,7 +75,7 @@ export default function About({ theme: _ }: PageProps) {
                     Solomon Neas
                   </h2>
                   <p className="font-fira text-[10px] text-[#00F0FF] tracking-wider">
-                    SECURITY OPERATIONS ENGINEER
+                    S³ STACK CREATOR
                   </p>
                 </div>
               </div>
@@ -83,16 +83,16 @@ export default function About({ theme: _ }: PageProps) {
               <div className="space-y-4 font-rajdhani text-sm text-[#5B7A8A] leading-relaxed">
                 <p>
                   Building the bridge between artificial intelligence and security operations.
-                  Focused on creating tools that enable SOC analysts to leverage AI for faster,
+                  Focused on creating tools that enable SOC analysts to leverage Solomon's S³ Stack for faster,
                   more accurate threat detection and response.
                 </p>
                 <p>
-                  Creator of the SOC stack — a suite of {tools.length} security tools including
+                  Creator of Solomon's S³ Stack — a suite of {tools.length} security tools including
                   MCP servers for Wazuh, TheHive, Cortex, MISP, and more. Each tool is designed
                   to integrate AI into the security workflow without replacing human judgment.
                 </p>
                 <p>
-                  The SOC Showcase itself demonstrates how these tools work together in a
+                  The Solomon's S³ Stack Showcase demonstrates how these tools work together in a
                   cohesive security architecture, from alert ingestion through detection tuning.
                 </p>
               </div>
@@ -142,7 +142,7 @@ export default function About({ theme: _ }: PageProps) {
             >
               <div className="font-fira text-[10px] text-[#00F0FF] tracking-wider uppercase mb-4 flex items-center gap-2">
                 <div className="w-6 h-px bg-[#00F0FF]" />
-                TOOLS DEPLOYED
+                S³ STACK TOOLS
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {tools.slice(0, 6).map((tool, i) => (
@@ -234,7 +234,7 @@ export default function About({ theme: _ }: PageProps) {
                   { label: 'SYSTEMS', value: 'ONLINE', color: '#39FF14' },
                   { label: 'THREAT LEVEL', value: 'NOMINAL', color: '#39FF14' },
                   { label: 'MCP SERVERS', value: '7 / 7', color: '#00F0FF' },
-                  { label: 'TOOLS ACTIVE', value: `${tools.filter(t => t.status === 'production').length} / ${tools.length}`, color: '#00F0FF' },
+                  { label: 'S³ TOOLS', value: `${tools.filter(t => t.status === 'production').length} / ${tools.length}`, color: '#00F0FF' },
                   { label: 'AI ENGINE', value: 'CLAUDE', color: '#FF00FF' },
                   { label: 'ORCHESTRATOR', value: 'OPENCLAW', color: '#FF00FF' },
                 ].map((item, i) => (
@@ -287,7 +287,7 @@ export default function About({ theme: _ }: PageProps) {
                 soc.solomonneas.dev
               </div>
               <div className="font-fira text-[9px] text-[#5B7A8A] mt-1 opacity-60">
-                BUILT FOR THE SOC COMMUNITY
+                BUILT FOR THE SOC COMMUNITY — SOLOMON'S S³ STACK
               </div>
             </motion.div>
           </div>

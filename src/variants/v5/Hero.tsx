@@ -61,7 +61,7 @@ function CountUp({ target, duration = 2, suffix = '' }: { target: number; durati
 }
 
 /* ---- Word-by-word reveal ---- */
-const headlineWords = ['The', 'Complete', 'SOC', 'Stack'];
+const headlineWords = ['Solomon\'s', 'S³', 'Stack'];
 const wordVariants = {
   hidden: { opacity: 0, y: 20, filter: 'blur(8px)' },
   visible: (i: number) => ({
@@ -115,7 +115,7 @@ export default function Hero(_props: PageProps) {
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-medium font-jetbrains tracking-wide v5-glass"
             style={{ color: '#7C3AED' }}>
             <span className="w-1.5 h-1.5 rounded-full bg-[#10B981] animate-pulse" />
-            Open Source Security Operations
+            Built by Solomon Neas — Open Source Security Operations
           </span>
         </motion.div>
 
@@ -129,7 +129,7 @@ export default function Hero(_props: PageProps) {
               initial="hidden"
               animate="visible"
               className={`inline-block mr-4 md:mr-6 ${
-                word === 'SOC' ? 'v5-gradient-text' : 'text-[#FAFAFA]'
+                word === 'S³' ? 'v5-gradient-text' : 'text-[#FAFAFA]'
               }`}
             >
               {word}

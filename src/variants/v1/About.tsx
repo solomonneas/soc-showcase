@@ -37,7 +37,7 @@ export default function About({ theme: _ }: PageProps) {
             <span className="text-cyan-400">Neas</span>
           </h2>
           <p className="font-exo text-slate-400 max-w-2xl">
-            Security operations engineer building AI-powered tools for the modern SOC.
+            Security operations engineer. Creator of Solomon's S³ Stack — AI-powered tools for the modern SOC.
           </p>
         </motion.div>
 
@@ -60,14 +60,14 @@ export default function About({ theme: _ }: PageProps) {
                 Solomon Neas
               </h3>
               <p className="font-exo text-sm text-slate-400">
-                Security Operations Engineer
+                Security Operations Engineer • S³ Stack Creator
               </p>
             </div>
           </div>
 
           <div className="space-y-4 font-exo text-sm text-slate-400 leading-relaxed">
             <p>
-              This showcase presents a suite of tools designed to bridge the gap between
+              Solomon's S³ Stack is a suite of AI-powered tools designed to bridge the gap between
               AI assistants and security platforms. Using the Model Context Protocol (MCP),
               these tools enable natural language interaction with complex security systems —
               from SIEM queries to incident response orchestration.
@@ -78,7 +78,7 @@ export default function About({ theme: _ }: PageProps) {
               and MCP provides the standardized protocol to make it work reliably.
             </p>
             <p>
-              Every tool in this showcase is built for real-world SOC workflows, tested
+              Every tool in Solomon's S³ Stack is built for real-world SOC workflows, tested
               against production data, and designed to integrate into existing security
               stacks without disruption.
             </p>
@@ -183,8 +183,8 @@ export default function About({ theme: _ }: PageProps) {
             Mission Statement
           </div>
           <p className="font-chakra text-lg md:text-xl font-semibold uppercase tracking-wider text-slate-200 max-w-2xl mx-auto leading-relaxed">
-            "Empowering security teams with AI-augmented tooling that speaks the
-            analyst's language and respects operational reality."
+            "Empowering security teams with Solomon's S³ Stack — AI-augmented tooling that speaks
+            the analyst's language and respects operational reality."
           </p>
         </motion.div>
       </div>

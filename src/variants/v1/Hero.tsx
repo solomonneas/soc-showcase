@@ -90,10 +90,10 @@ export default function Hero({ theme: _ }: PageProps) {
           className="font-chakra font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl uppercase tracking-wider leading-[1.1] mb-6"
           style={{ color: '#E2E8F0' }}
         >
-          AI-Powered
+          Solomon's S³
           <br />
           <span className="text-cyan-400" style={{ textShadow: '0 0 40px rgba(6,182,212,0.3)' }}>
-            Security Operations
+            Stack
           </span>
         </motion.h1>
 
@@ -103,7 +103,7 @@ export default function Hero({ theme: _ }: PageProps) {
           transition={{ duration: 0.5, delay: 0.25 }}
           className="font-exo text-base md:text-lg text-slate-400 max-w-2xl mb-12 leading-relaxed"
         >
-          Building the bridge between AI and security operations. Nine MCP-integrated tools
+          Built by Solomon Neas. Building the bridge between AI and security operations. Nine MCP-integrated tools
           for threat hunting, incident response, and security automation.
         </motion.p>
 
