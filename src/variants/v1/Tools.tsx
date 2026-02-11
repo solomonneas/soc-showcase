@@ -72,7 +72,7 @@ export default function Tools({ theme: _ }: PageProps) {
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {filtered.map((tool, i) => {
             const status = statusConfig[tool.status];
-            const IconComponent = getLucideIcon(tool.icon) as React.ComponentType<{ size?: number; className?: string }>;
+            const IconComponent = getLucideIcon(tool.icon) as React.ComponentType<{ size?: number; className?: string; style?: React.CSSProperties }>;
 
             return (
               <motion.div

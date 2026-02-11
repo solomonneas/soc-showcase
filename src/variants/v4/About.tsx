@@ -121,7 +121,7 @@ export default function About(_props: PageProps) {
               Security operations engineer and builder of AI-augmented defense tools.
               Focused on bridging the gap between large language models and production
               security infrastructure through open protocols and reproducible
-              architectures. Creator of the SOC Stack and its constituent MCP
+              architectures. Creator of Solomon's S³ Stack and its constituent MCP
               integrations.
             </p>
             <div
@@ -143,7 +143,7 @@ export default function About(_props: PageProps) {
         <h3 className="paper-heading subsection-heading">6.2 References</h3>
         <p style={{ marginBottom: '1rem' }}>
           The following references document the tools, platforms, and protocols cited
-          throughout this paper. Items [1]–[{tools.length}] refer to SOC Stack
+          throughout this paper. Items [1]–[{tools.length}] refer to Solomon's S³ Stack
           components developed by the author; items [{tools.length + 1}]–[
           {tools.length + additionalRefs.length}] refer to external open-source
           projects and specifications.
@@ -185,7 +185,7 @@ export default function About(_props: PageProps) {
         <p>
           The author acknowledges the open-source security community whose foundational
           tools — Wazuh, TheHive, MISP, Cortex, Zeek, and Suricata — make architectures
-          like the SOC Stack possible. Special recognition is due to the Anthropic team
+          like Solomon's S³ Stack possible. Special recognition is due to the Anthropic team
           for the Model Context Protocol specification, which provides the interoperability
           standard upon which the MCP bridge layer is built.
         </p>
@@ -195,7 +195,7 @@ export default function About(_props: PageProps) {
       <motion.div {...fade} transition={{ delay: 0.2, duration: 0.5 }}>
         <h3 className="paper-heading subsection-heading">6.4 License & Availability</h3>
         <p>
-          All SOC Stack components are released under permissive open-source licenses.
+          All Solomon's S³ Stack components are released under permissive open-source licenses.
           Source code, documentation, and deployment artifacts are available at{' '}
           <span
             style={{
@@ -215,7 +215,7 @@ export default function About(_props: PageProps) {
         <div className="footnote-item">
           <span className="footnote-number">†</span>
           Correspondence: me@solomonneas.dev. This paper was prepared in February 2026
-          and reflects the state of the SOC Stack at that time. Component status and
+          and reflects the state of Solomon's S³ Stack at that time. Component status and
           capabilities may have evolved since publication.
         </div>
       </div>

@@ -40,7 +40,7 @@ export default function V2Layout() {
           <Link to="/2" className="flex items-center gap-2.5">
             <Shield size={20} className="text-[#2563EB]" />
             <span className="font-space font-bold text-base text-[#0F172A] tracking-tight">
-              SOC Stack
+              S³ Stack
             </span>
             <span className="hidden sm:inline font-fira text-[10px] text-[#94A3B8] ml-0.5">
               docs
@@ -145,7 +145,7 @@ export default function V2Layout() {
         <div className="max-w-6xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2 text-sm text-[#64748B] font-franklin">
             <Shield size={14} className="text-[#2563EB]" />
-            <span>SOC Stack Documentation</span>
+            <span>S³ Stack Documentation</span>
             <span className="text-[#CBD5E1]">·</span>
             <span>Solomon Neas</span>
           </div>

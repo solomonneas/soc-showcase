@@ -55,7 +55,7 @@ export default function V5Layout() {
               <Shield size={18} className="text-[#7C3AED]" />
             </div>
             <span className="font-space text-base font-bold tracking-tight v5-gradient-text">
-              SOC Stack
+              S³ Stack
             </span>
           </Link>
 

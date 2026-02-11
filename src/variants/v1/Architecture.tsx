@@ -16,7 +16,7 @@ const layerDescriptions: Record<string, string> = {
     'Production security tools form the operational backbone. These platforms generate alerts, process incidents, analyze threats, and monitor network traffic continuously.',
 };
 
-export default function Architecture({ theme }: PageProps) {
+export default function Architecture({ theme: _theme }: PageProps) {
   const [selectedNode, setSelectedNode] = useState<ArchitectureNode | null>(null);
 
   return (

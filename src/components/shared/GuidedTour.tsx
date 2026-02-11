@@ -49,9 +49,9 @@ const tourSteps: DriverStep[] = [
   {
     element: '[data-tour="hero"]',
     popover: {
-      title: 'Welcome to SOC Showcase',
+      title: 'Welcome to Solomon\'s S³ Stack',
       description:
-        'This is a portfolio demo of Security Operations Center tools and workflows. Each section highlights a different aspect of modern SOC operations.',
+        'Solomon\'s S³ Stack is a unified security operations platform. Each section highlights a different aspect of the architecture.',
       side: 'bottom',
       align: 'center',
     },

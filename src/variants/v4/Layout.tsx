@@ -50,7 +50,7 @@ export default function V4Layout() {
               whiteSpace: 'nowrap',
             }}
           >
-            SOC Stack
+            S³ Stack
           </Link>
 
           {/* Section links */}
@@ -115,7 +115,7 @@ export default function V4Layout() {
           color: '#57534E',
         }}
       >
-        SOC Stack — soc.solomonneas.dev — © 2026 Solomon Neas
+        S³ Stack — soc.solomonneas.dev — © 2026 Solomon Neas
       </footer>
     </div>
   );

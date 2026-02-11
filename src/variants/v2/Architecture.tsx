@@ -149,7 +149,7 @@ export default function Architecture({ theme: _ }: PageProps) {
                     </div>
 
                     {selectedNode.description && (
-                      <p className="text-sm text-[#64748B] leading-relaxed mb-5 pb-5 border-b border-[#E2E8F0]">
+                      <p className="text-sm text-[#64748B] leading-relaxed mb-5 pb-5 border-b border-[#E2E8F0] line-clamp-4">
                         {selectedNode.description}
                       </p>
                     )}
@@ -265,7 +265,7 @@ export default function Architecture({ theme: _ }: PageProps) {
                         {layer.label}
                       </h3>
                     </div>
-                    <p className="text-sm text-[#64748B] leading-relaxed mb-4">
+                    <p className="text-sm text-[#64748B] leading-relaxed mb-4 line-clamp-3">
                       {layerDescriptions[layer.id]}
                     </p>
                     <div className="flex flex-wrap gap-1.5">

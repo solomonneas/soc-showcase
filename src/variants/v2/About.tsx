@@ -40,7 +40,7 @@ export default function About({ theme: _ }: PageProps) {
               Solomon Neas
             </h1>
             <p className="text-[#64748B] max-w-2xl leading-relaxed">
-              Security operations engineer building AI-powered tools for the modern SOC.
+              Security operations engineer. Creator of Solomon's S³ Stack — AI-powered tools for the modern SOC.
             </p>
           </motion.div>
         </div>
@@ -65,13 +65,13 @@ export default function About({ theme: _ }: PageProps) {
                   <h2 className="font-space font-bold text-xl text-[#0F172A]">
                     Solomon Neas
                   </h2>
-                  <p className="text-sm text-[#64748B]">Security Operations Engineer</p>
+                  <p className="text-sm text-[#64748B]">S³ Stack Creator</p>
                 </div>
               </div>
 
               <div className="space-y-4 text-[#64748B] leading-relaxed">
                 <p>
-                  This showcase presents a suite of tools designed to bridge the gap between
+                  Solomon's S³ Stack is a suite of tools designed to bridge the gap between
                   AI assistants and security platforms. Using the Model Context Protocol (MCP),
                   these tools enable natural language interaction with complex security systems —
                   from SIEM queries to incident response orchestration.
@@ -82,7 +82,7 @@ export default function About({ theme: _ }: PageProps) {
                   and MCP provides the standardized protocol to make it work reliably.
                 </p>
                 <p>
-                  Every tool in this showcase is built for real-world SOC workflows, tested
+                  Every tool in Solomon's S³ Stack is built for real-world SOC workflows, tested
                   against production data, and designed to integrate into existing security
                   stacks without disruption.
                 </p>
@@ -179,7 +179,7 @@ export default function About({ theme: _ }: PageProps) {
                   Mission
                 </div>
                 <p className="font-space text-sm font-medium text-[#0F172A] leading-relaxed">
-                  "Empowering security teams with AI-augmented tooling that speaks the
+                  "Empowering security teams with Solomon's S³ Stack — AI-augmented tooling that speaks the
                   analyst's language and respects operational reality."
                 </p>
               </motion.div>

@@ -22,7 +22,7 @@ const tableOfContents = [
   { label: 'Tools', path: '/2/tools', icon: Wrench, description: 'Nine security tools spanning detection to response' },
   { label: 'Case Studies', path: '/2/cases', icon: FileText, description: 'Real-world remediation and compliance operations' },
   { label: 'Pipeline', path: '/2/pipeline', icon: GitBranch, description: 'Ten-stage incident response data flow' },
-  { label: 'About', path: '/2/about', icon: User, description: 'Builder profile, skills, and contact information' },
+  { label: 'About', path: '/2/about', icon: User, description: 'Built by Solomon Neas — builder profile and contact information' },
 ];
 
 const metrics = [
@@ -48,12 +48,12 @@ export default function Hero({ theme: _ }: PageProps) {
           >
             <div className="v2-section-label">Documentation</div>
             <h1 className="font-space font-bold text-4xl sm:text-5xl md:text-[3.25rem] text-[#0F172A] leading-[1.15] mb-5 max-w-3xl">
-              SOC Stack: A Unified Security Operations Platform
+              Solomon's S³ Stack: A Unified Security Operations Platform
             </h1>
             <p className="text-lg text-[#64748B] max-w-2xl leading-relaxed mb-8">
               An integrated suite of AI-powered tools bridging security operations platforms
               through the Model Context Protocol. Purpose-built for threat hunting, incident
-              response, and security automation.
+              response, and security automation. Built by Solomon Neas.
             </p>
 
             <div className="flex flex-wrap gap-3">

@@ -52,7 +52,7 @@ export default function About(_props: PageProps) {
             Solomon Neas
           </h1>
           <p className="font-dm-sans text-xl text-[#A1A1AA] mb-2">
-            Security Operations Engineer
+            Security Operations Engineer — S³ Stack Creator
           </p>
           <p className="font-jetbrains text-sm text-[#71717A]">
             Building the bridge between AI and security operations
@@ -68,17 +68,17 @@ export default function About(_props: PageProps) {
         >
           <p className="font-dm-sans text-[#A1A1AA] leading-relaxed text-lg mb-4">
             I specialize in integrating AI capabilities into Security Operations Center workflows.
-            The SOC Stack represents my approach to the challenge every security team faces: too many
+            Solomon's S³ Stack represents my approach to the challenge every security team faces: too many
             alerts, too little context, and not enough hours in the day.
           </p>
           <p className="font-dm-sans text-[#A1A1AA] leading-relaxed text-lg mb-4">
-            Through the Model Context Protocol, I've built bridges that let AI assistants
+            Through the Model Context Protocol, I've built Solomon's S³ Stack — bridges that let AI assistants
             directly query and operate security tools — Wazuh, TheHive, Cortex, MISP, and
             more — while keeping human analysts in control of every decision.
           </p>
           <p className="font-dm-sans text-[#A1A1AA] leading-relaxed text-lg">
             Everything is open source. The tools, the MCP servers, the playbooks, the
-            documentation. If it helps a single SOC team work smarter, it was worth building.
+            documentation. If it helps a single SOC team to leverage Solomon's S³ Stack and work smarter, it was worth building.
           </p>
         </motion.div>
 
@@ -171,7 +171,7 @@ export default function About(_props: PageProps) {
           className="text-center mt-16"
         >
           <p className="font-jetbrains text-xs text-[#3F3F46]">
-            SOC Stack · Built with React, TypeScript & Tailwind · Open Source
+            Solomon's S³ Stack · Built with React, TypeScript & Tailwind · Open Source
           </p>
         </motion.div>
       </div>

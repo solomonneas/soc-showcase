@@ -16,7 +16,7 @@ export default function VariantPicker() {
           >
             <Shield size={28} className="text-cyan-400" />
             <h1 className="text-3xl font-bold text-white font-inter">
-              SOC Showcase
+              Solomon's S³ Stack
             </h1>
           </motion.div>
           <motion.p

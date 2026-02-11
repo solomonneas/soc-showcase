@@ -44,7 +44,7 @@ export default function Tools(_props: PageProps) {
       </motion.h2>
 
       <motion.p {...fade} transition={{ delay: 0.05, duration: 0.5 }}>
-        Table 1 presents a comprehensive inventory of all components comprising the SOC
+        Table 1 presents a comprehensive inventory of all components comprising the S³
         Stack. Each component is classified by functional category, underlying technology
         stack, and operational maturity status. Components marked <em>Production</em>{' '}
         have been deployed in live environments with active monitoring; <em>Beta</em>{' '}
@@ -93,7 +93,7 @@ export default function Tools(_props: PageProps) {
           </table>
         </div>
         <div className="figure-caption">
-          <strong>Table 1.</strong> SOC Stack component inventory. Technology column lists
+          <strong>Table 1.</strong> S³ Stack component inventory. Technology column lists
           primary dependencies. Status reflects operational maturity as of February 2026.
         </div>
       </motion.div>

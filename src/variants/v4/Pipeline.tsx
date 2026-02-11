@@ -30,7 +30,7 @@ export default function Pipeline(_props: PageProps) {
       </motion.h2>
 
       <motion.p {...fade} transition={{ delay: 0.05, duration: 0.5 }}>
-        The SOC Stack processes security events through a ten-stage pipeline spanning
+        The S³ Stack processes security events through a ten-stage pipeline spanning
         alert ingestion, enrichment, triage, investigation, containment, eradication,
         recovery, lessons learned, intelligence updates, and detection tuning. This
         section presents the pipeline as both a visual figure and a structured
@@ -243,11 +243,11 @@ export default function Pipeline(_props: PageProps) {
       {/* Summary */}
       <hr className="section-rule" />
       <motion.p {...fade} transition={{ delay: 0.4, duration: 0.5 }}>
-        The closed-loop nature of this pipeline distinguishes the SOC Stack from
+        The closed-loop nature of this pipeline distinguishes the S³ Stack from
         linear incident response models. Intelligence gathered during post-incident
         review feeds directly into detection tuning, which in turn improves the
         quality of alert ingestion in subsequent cycles. This continuous improvement
-        mechanism is central to the architecture's long-term value proposition.
+        mechanism is central to the S³ Stack's long-term value proposition.
       </motion.p>
       <p className="cross-ref">
         For author information and a complete list of references, see Section 6.

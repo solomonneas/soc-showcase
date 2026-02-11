@@ -69,7 +69,7 @@ export default function V1Layout() {
               />
             </div>
             <span className="font-chakra font-bold text-sm tracking-wider uppercase text-cyan-400">
-              SOC Showcase
+              Solomon's S³ Stack
             </span>
             <span className="hidden sm:inline text-[10px] font-jetbrains text-slate-500 ml-1">
               v1.0

@@ -17,7 +17,7 @@ export default function Hero(_props: PageProps) {
     <div className="paper-wrapper paper-body">
       {/* Title */}
       <motion.h1 className="paper-title" {...fade}>
-        SOC Stack: An Integrated, AI-Augmented Security Operations Architecture
+        Solomon's S³ Stack: An Integrated, AI-Augmented Security Operations Architecture
       </motion.h1>
 
       {/* Author & Date */}
@@ -33,8 +33,8 @@ export default function Hero(_props: PageProps) {
           <p>
             Modern Security Operations Centers face an escalating challenge: the volume and
             sophistication of threats continue to outpace the capacity of human analysts to
-            detect, investigate, and respond in a timely manner. This paper presents the
-            SOC Stack, an integrated security operations architecture that augments
+            detect, investigate, and respond in a timely manner. This paper presents
+            Solomon's S³ Stack, an integrated security operations architecture that augments
             traditional SIEM, SOAR, and threat intelligence platforms with artificial
             intelligence through the Model Context Protocol (MCP). The architecture enables
             conversational AI assistants to directly query security tools, correlate alerts,

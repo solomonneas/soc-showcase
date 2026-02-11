@@ -111,7 +111,7 @@ export default function DocsPage() {
           </Link>
           <div className="flex items-center gap-2">
             <Shield size={18} className="text-cyan-400" />
-            <span className="font-semibold text-white text-sm">SOC Showcase Docs</span>
+            <span className="font-semibold text-white text-sm">S³ Stack Docs</span>
           </div>
           <Link
             to="/"
@@ -127,7 +127,7 @@ export default function DocsPage() {
         {/* Overview */}
         <SectionHeading icon={BookOpen} title="Overview" id="overview" />
         <p className="text-gray-400 leading-relaxed mb-4">
-          SOC Showcase is a frontend portfolio demonstrating Security Operations Center tooling,
+          Solomon's S³ Stack is a unified security operations platform demonstrating SOC tooling,
           architecture, and incident response workflows. Built with React, TypeScript, and
           Tailwind CSS, it presents 9 SOC tools through 5 visually distinct theme variants.
         </p>
@@ -331,7 +331,7 @@ export default function DocsPage() {
       {/* Footer */}
       <footer className="border-t border-white/5 px-6 py-8 text-center">
         <p className="text-xs text-gray-600">
-          SOC Showcase — soc.solomonneas.dev — Built by Solomon Neas
+          Solomon's S³ Stack — soc.solomonneas.dev — Built by Solomon Neas
         </p>
       </footer>
     </div>
