@@ -205,7 +205,7 @@ export default function DocsPage() {
           <div className="p-4 rounded-lg border-l-4 border-purple-500 bg-purple-500/5">
             <h4 className="text-sm font-semibold text-purple-400 mb-1">AI Layer</h4>
             <p className="text-xs text-gray-400 leading-relaxed">
-              Claude AI processes queries, OpenClaw orchestrates multi-step operations, and SOC
+              The LLM processes queries, the AI orchestrator coordinates multi-step operations, and SOC
               analysts maintain human-in-the-loop oversight. This layer generates the intent that
               flows down to security tools.
             </p>

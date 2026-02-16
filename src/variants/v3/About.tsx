@@ -235,8 +235,8 @@ export default function About({ theme: _ }: PageProps) {
                   { label: 'THREAT LEVEL', value: 'NOMINAL', color: '#39FF14' },
                   { label: 'MCP SERVERS', value: '7 / 7', color: '#00F0FF' },
                   { label: 'S³ TOOLS', value: `${tools.filter(t => t.status === 'production').length} / ${tools.length}`, color: '#00F0FF' },
-                  { label: 'AI ENGINE', value: 'CLAUDE', color: '#FF00FF' },
-                  { label: 'ORCHESTRATOR', value: 'OPENCLAW', color: '#FF00FF' },
+                  { label: 'AI ENGINE', value: 'OPUS 4.6', color: '#FF00FF' },
+                  { label: 'ORCHESTRATOR', value: 'MCP AGENT', color: '#FF00FF' },
                 ].map((item, i) => (
                   <motion.div
                     key={item.label}

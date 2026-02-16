@@ -10,25 +10,25 @@ export const architectureLayers: ArchitectureLayer[] = [
     nodes: [
       {
         id: 'claude',
-        label: 'Claude AI',
+        label: 'LLM (Opus 4.6)',
         layer: 'ai',
         x: 100,
         y: 40,
         width: 140,
         height: 60,
         color: '#aa66ff',
-        description: 'Primary AI assistant for SOC operations',
+        description: 'AI reasoning engine for alert triage and threat correlation',
       },
       {
-        id: 'openclaw',
-        label: 'OpenClaw',
+        id: 'orchestrator',
+        label: 'AI Orchestrator',
         layer: 'ai',
         x: 320,
         y: 40,
         width: 140,
         height: 60,
         color: '#8844dd',
-        description: 'AI agent orchestration platform',
+        description: 'MCP-based agent orchestration layer',
       },
       {
         id: 'analyst',
@@ -180,8 +180,8 @@ export const architectureEdges: ArchitectureEdge[] = [
   { id: 'e-claude-cortex-mcp', from: 'claude', to: 'cortex-mcp', label: 'MCP', animated: true },
   { id: 'e-claude-misp-mcp', from: 'claude', to: 'misp-mcp', label: 'MCP', animated: true },
   { id: 'e-claude-mitre-mcp', from: 'claude', to: 'mitre-mcp', label: 'MCP', animated: true },
-  { id: 'e-openclaw-claude', from: 'openclaw', to: 'claude', label: 'Orchestration' },
-  { id: 'e-analyst-openclaw', from: 'analyst', to: 'openclaw', label: 'Commands' },
+  { id: 'e-orchestrator-claude', from: 'orchestrator', to: 'claude', label: 'Orchestration' },
+  { id: 'e-analyst-orchestrator', from: 'analyst', to: 'orchestrator', label: 'Commands' },
 
   // MCP → Tool connections
   { id: 'e-wazuh-mcp-wazuh', from: 'wazuh-mcp', to: 'wazuh', label: 'API', animated: true },

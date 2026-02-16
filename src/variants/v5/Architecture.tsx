@@ -237,7 +237,7 @@ export default function Architecture(_props: PageProps) {
                 </h3>
               </div>
               <p className="text-sm text-[#A1A1AA] font-dm-sans mb-4">
-                {li === 0 && 'Claude AI, OpenClaw orchestration, and human analyst oversight for decision-making.'}
+                {li === 0 && 'LLM reasoning, MCP orchestration, and human analyst oversight for decision-making.'}
                 {li === 1 && 'Model Context Protocol servers bridging AI to security tools via standardized APIs.'}
                 {li === 2 && 'Wazuh, TheHive, Cortex, MISP, Zeek, and Suricata for detection and response.'}
               </p>

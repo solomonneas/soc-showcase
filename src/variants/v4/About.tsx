@@ -68,9 +68,9 @@ const additionalRefs = [
   },
   {
     num: tools.length + 9,
-    label: 'OpenClaw',
-    desc: 'AI agent orchestration platform for tool integration.',
-    url: 'https://github.com/openclaw',
+    label: 'MCP Orchestration',
+    desc: 'AI agent orchestration via Model Context Protocol for tool integration.',
+    url: 'https://modelcontextprotocol.io',
   },
 ];
 

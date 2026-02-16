@@ -9,7 +9,7 @@ const allNodes = architectureLayers.flatMap((l) => l.nodes);
 
 const layerDescriptions: Record<string, string> = {
   'ai-layer':
-    'AI assistants and human analysts interact at this layer. Claude AI processes queries, OpenClaw orchestrates multi-step operations, and SOC analysts maintain oversight of all automated actions.',
+    'AI assistants and human analysts interact at this layer. The LLM processes queries, the AI orchestrator coordinates multi-step operations, and SOC analysts maintain oversight of all automated actions.',
   'mcp-layer':
     'Model Context Protocol servers bridge AI to security tools. Each MCP server translates natural language into tool-specific API calls, handling authentication, rate limiting, and response normalization.',
   'tools-layer':

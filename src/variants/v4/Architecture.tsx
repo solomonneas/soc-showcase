@@ -15,7 +15,7 @@ const layerDescriptions: Record<string, { title: string; prose: string }> = {
   'ai-layer': {
     title: 'AI Orchestration Layer',
     prose:
-      'The topmost layer comprises the AI reasoning engine (Claude), the agent orchestration platform (OpenClaw), and the human SOC analyst. Claude serves as the primary analytical interface, receiving structured context from MCP servers and producing natural-language assessments, queries, and response recommendations. OpenClaw manages session state, tool routing, and multi-agent coordination, ensuring that AI interactions remain bounded and auditable. The SOC analyst retains final authority over all containment and remediation actions, enforcing a human-in-the-loop model consistent with responsible AI deployment in security-critical environments.',
+      'The topmost layer comprises the AI reasoning engine (LLM), the MCP-based orchestration layer, and the human SOC analyst. The LLM serves as the primary analytical interface, receiving structured context from MCP servers and producing natural-language assessments, queries, and response recommendations. The orchestration layer manages session state, tool routing, and multi-agent coordination, ensuring that AI interactions remain bounded and auditable. The SOC analyst retains final authority over all containment and remediation actions, enforcing a human-in-the-loop model consistent with responsible AI deployment in security-critical environments.',
   },
   'mcp-layer': {
     title: 'MCP Bridge Layer',
