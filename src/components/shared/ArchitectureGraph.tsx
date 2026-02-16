@@ -196,7 +196,7 @@ export default function ArchitectureGraph({
                 textAnchor="middle"
                 dominantBaseline="central"
                 fill={isHovered ? '#ffffff' : node.color}
-                fontSize="12"
+                fontSize={node.label.length > 12 ? '10' : '12'}
                 fontWeight="600"
               >
                 {node.label}

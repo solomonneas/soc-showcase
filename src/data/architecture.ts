@@ -10,7 +10,7 @@ export const architectureLayers: ArchitectureLayer[] = [
     nodes: [
       {
         id: 'claude',
-        label: 'LLM (Opus 4.6)',
+        label: 'LLM Engine',
         layer: 'ai',
         x: 100,
         y: 40,
