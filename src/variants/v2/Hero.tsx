@@ -18,11 +18,11 @@ import { architectureLayers } from '@/data/architecture';
 import type { PageProps } from '@/types';
 
 const tableOfContents = [
-  { label: 'Architecture', path: '/2/architecture', icon: Layers, description: 'Three-layer system architecture with MCP integration' },
-  { label: 'Tools', path: '/2/tools', icon: Wrench, description: 'Nine security tools spanning detection to response' },
-  { label: 'Case Studies', path: '/2/cases', icon: FileText, description: 'Real-world remediation and compliance operations' },
-  { label: 'Pipeline', path: '/2/pipeline', icon: GitBranch, description: 'Ten-stage incident response data flow' },
-  { label: 'About', path: '/2/about', icon: User, description: 'Built by Solomon Neas — builder profile and contact information' },
+  { label: 'Architecture', path: '/architecture', icon: Layers, description: 'Three-layer system architecture with MCP integration' },
+  { label: 'Tools', path: '/tools', icon: Wrench, description: 'Nine security tools spanning detection to response' },
+  { label: 'Case Studies', path: '/cases', icon: FileText, description: 'Real-world remediation and compliance operations' },
+  { label: 'Pipeline', path: '/pipeline', icon: GitBranch, description: 'Ten-stage incident response data flow' },
+  { label: 'About', path: '/about', icon: User, description: 'Built by Solomon Neas — builder profile and contact information' },
 ];
 
 const metrics = [
@@ -58,14 +58,14 @@ export default function Hero({ theme: _ }: PageProps) {
 
             <div className="flex flex-wrap gap-3">
               <Link
-                to="/2/architecture"
+                to="/architecture"
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#2563EB] text-white text-sm font-space font-medium hover:bg-[#1D4ED8] transition-colors"
               >
                 Explore Architecture
                 <ArrowRight size={16} />
               </Link>
               <Link
-                to="/2/tools"
+                to="/tools"
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-[#E2E8F0] text-[#1E293B] text-sm font-space font-medium hover:bg-[#F8FAFC] hover:border-[#CBD5E1] transition-colors"
               >
                 View Tools
@@ -118,7 +118,7 @@ export default function Hero({ theme: _ }: PageProps) {
                 </h2>
               </div>
               <Link
-                to="/2/architecture"
+                to="/architecture"
                 className="hidden sm:inline-flex items-center gap-1.5 text-sm text-[#2563EB] font-space font-medium hover:underline"
               >
                 Full details <ArrowRight size={14} />

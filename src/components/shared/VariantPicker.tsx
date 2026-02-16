@@ -43,7 +43,7 @@ export default function VariantPicker() {
               transition={{ delay: 0.1 * index, duration: 0.4 }}
             >
               <Link
-                to={`/${theme.id}`}
+                to={`/dev/${theme.id}`}
                 className="group block rounded-xl border border-white/10 bg-white/[0.02] p-6 hover:border-white/20 transition-all duration-200"
               >
                 {/* Color preview strip */}

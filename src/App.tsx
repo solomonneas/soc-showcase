@@ -29,7 +29,7 @@ function VariantKeyboardNav() {
     const handleKey = (e: KeyboardEvent) => {
       if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
       const num = parseInt(e.key);
-      if (num >= 1 && num <= 5) navigate(`/${num}`);
+      if (num >= 1 && num <= 5) navigate(`/dev/${num}`);
       else if (e.key === 'Escape' || e.key === '0') navigate('/');
     };
     window.addEventListener('keydown', handleKey);
@@ -82,7 +82,7 @@ export default function App() {
     <>
       <ScrollToTop />
       <VariantKeyboardNav />
-      <DefaultVariantRedirect defaultVariant={defaultVariant} />
+      {/* DefaultVariantRedirect removed — V2 is now root */}
       <KeyboardHints />
       <VariantSettings
         currentVariant={currentVariant}
@@ -91,12 +91,13 @@ export default function App() {
         variantNames={VARIANT_NAMES}
       />
       <Routes>
-        <Route path="/" element={<VariantPicker />} />
-        <Route path="/1/*" element={<V1Layout />} />
-        <Route path="/2/*" element={<V2Layout />} />
-        <Route path="/3/*" element={<V3Layout />} />
-        <Route path="/4/*" element={<V4Layout />} />
-        <Route path="/5/*" element={<V5Layout />} />
+        <Route path="/*" element={<V2Layout />} />
+        <Route path="/dev" element={<VariantPicker />} />
+        <Route path="/dev/1/*" element={<V1Layout />} />
+        <Route path="/dev/2/*" element={<V2Layout />} />
+        <Route path="/dev/3/*" element={<V3Layout />} />
+        <Route path="/dev/4/*" element={<V4Layout />} />
+        <Route path="/dev/5/*" element={<V5Layout />} />
         <Route path="/docs" element={<DocsPage />} />
         <Route path="/:variant/docs" element={<DocsPage />} />
         <Route path="*" element={<NotFound />} />

@@ -14,12 +14,12 @@ import './styles.css';
 const theme = variantThemes[1]!;
 
 const navLinks = [
-  { path: '/2', label: 'Overview' },
-  { path: '/2/architecture', label: 'Architecture' },
-  { path: '/2/tools', label: 'Tools' },
-  { path: '/2/cases', label: 'Case Studies' },
-  { path: '/2/pipeline', label: 'Pipeline' },
-  { path: '/2/about', label: 'About' },
+  { path: '/', label: 'Overview' },
+  { path: '/architecture', label: 'Architecture' },
+  { path: '/tools', label: 'Tools' },
+  { path: '/cases', label: 'Case Studies' },
+  { path: '/pipeline', label: 'Pipeline' },
+  { path: '/about', label: 'About' },
 ];
 
 export default function V2Layout() {
@@ -27,7 +27,7 @@ export default function V2Layout() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const isActive = (path: string) => {
-    if (path === '/2') return location.pathname === '/2';
+    if (path === '/') return location.pathname === '/';
     return location.pathname.startsWith(path);
   };
 
@@ -37,7 +37,7 @@ export default function V2Layout() {
       <nav className="v2-nav sticky top-0 z-50 backdrop-blur-sm bg-white/95">
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
           {/* Logo */}
-          <Link to="/2" className="flex items-center gap-2.5">
+          <Link to="/" className="flex items-center gap-2.5">
             <Shield size={20} className="text-[#2563EB]" />
             <span className="font-space font-bold text-base text-[#0F172A] tracking-tight">
               S³ Stack
@@ -61,13 +61,6 @@ export default function V2Layout() {
                 </Link>
               );
             })}
-            <div className="w-px h-5 bg-[#E2E8F0] mx-2" />
-            <Link
-              to="/"
-              className="font-fira text-[11px] px-3 py-1.5 rounded-md border border-[#E2E8F0] text-[#94A3B8] hover:text-[#1E293B] hover:border-[#CBD5E1] transition-colors"
-            >
-              All Variants
-            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -113,15 +106,6 @@ export default function V2Layout() {
                     </Link>
                   );
                 })}
-                <div className="pt-2 border-t border-[#E2E8F0]">
-                  <Link
-                    to="/"
-                    onClick={() => setMobileOpen(false)}
-                    className="block px-3 py-2 text-xs font-fira text-[#94A3B8]"
-                  >
-                    ← All Variants
-                  </Link>
-                </div>
               </div>
             </motion.div>
           )}
