@@ -103,7 +103,7 @@ export default function App() {
         <Route path="*" element={<NotFound />} />
       </Routes>
       <GuidedTour />
-      <GitHubFooter />
+      {/* GitHubFooter removed — V2 footer has all links */}
     </>
   );
 }
