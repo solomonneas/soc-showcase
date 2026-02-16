@@ -12,6 +12,7 @@ import NotFound from '@/pages/NotFound';
 import KeyboardHints from '@/components/shared/KeyboardHints';
 import VariantSettings from '@/components/shared/VariantSettings';
 import { useDefaultVariant } from '@/hooks/useDefaultVariant';
+import ScrollToTop from '@/components/shared/ScrollToTop';
 
 const APP_ID = 'soc-showcase';
 const VARIANT_NAMES = [
@@ -79,6 +80,7 @@ export default function App() {
 
   return (
     <>
+      <ScrollToTop />
       <VariantKeyboardNav />
       <DefaultVariantRedirect defaultVariant={defaultVariant} />
       <KeyboardHints />
