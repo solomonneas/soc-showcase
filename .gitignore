@@ -27,3 +27,7 @@ POLISH_NOTES.md
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+CLAUDE.md
+TASK_*.md
+IMPLEMENTATION_*.md
+*_SUMMARY.md
