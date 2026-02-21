@@ -17,7 +17,7 @@ export const architectureLayers: ArchitectureLayer[] = [
         width: 140,
         height: 60,
         color: '#aa66ff',
-        description: 'AI reasoning engine for alert triage and threat correlation',
+        description: 'Alert triage & threat correlation',
       },
       {
         id: 'orchestrator',
