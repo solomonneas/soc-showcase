@@ -5,6 +5,8 @@
   <img src="https://img.shields.io/badge/Framer_Motion-11-FF0050?style=flat-square&logo=framer&logoColor=white" alt="Framer Motion" />
   <img src="https://img.shields.io/badge/Vite-6-646CFF?style=flat-square&logo=vite&logoColor=white" alt="Vite" />
   <img src="https://img.shields.io/badge/License-MIT-green?style=flat-square" alt="MIT License" />
+
+  <a href="https://solomonneas.dev/projects/soc-showcase"><img src="https://img.shields.io/badge/Portfolio-solomonneas.dev-22c55e?style=flat-square" alt="Portfolio" /></a>
 </p>
 
 # 🛡️ SOC Showcase
