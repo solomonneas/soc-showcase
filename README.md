@@ -1,12 +1,12 @@
 <p align="center">
-  <img src="https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react&logoColor=white" alt="React" />
-  <img src="https://img.shields.io/badge/TypeScript-5-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript" />
-  <img src="https://img.shields.io/badge/Tailwind_CSS-3-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white" alt="Tailwind CSS" />
-  <img src="https://img.shields.io/badge/Framer_Motion-11-FF0050?style=flat-square&logo=framer&logoColor=white" alt="Framer Motion" />
-  <img src="https://img.shields.io/badge/Vite-6-646CFF?style=flat-square&logo=vite&logoColor=white" alt="Vite" />
-  <img src="https://img.shields.io/badge/License-MIT-green?style=flat-square" alt="MIT License" />
+  <img src="https://shieldcn.dev/badge/React-19-61DAFB.svg?logo=react&logoColor=white" alt="React" />
+  <img src="https://shieldcn.dev/badge/TypeScript-5-3178C6.svg?logo=typescript&logoColor=white" alt="TypeScript" />
+  <img src="https://shieldcn.dev/badge/Tailwind_CSS-3-06B6D4.svg?logo=tailwindcss&logoColor=white" alt="Tailwind CSS" />
+  <img src="https://shieldcn.dev/badge/Framer_Motion-11-FF0050.svg?logo=framer&logoColor=white" alt="Framer Motion" />
+  <img src="https://shieldcn.dev/badge/Vite-6-646CFF.svg?logo=vite&logoColor=white" alt="Vite" />
+  <img src="https://shieldcn.dev/badge/License-MIT-green.svg" alt="MIT License" />
 
-  <a href="https://solomonneas.dev/projects/soc-showcase"><img src="https://img.shields.io/badge/Portfolio-solomonneas.dev-22c55e?style=flat-square" alt="Portfolio" /></a>
+  <a href="https://solomonneas.dev/projects/soc-showcase"><img src="https://shieldcn.dev/badge/Portfolio-solomonneas.dev-22c55e.svg" alt="Portfolio" /></a>
 </p>
 
 # 🛡️ SOC Showcase
