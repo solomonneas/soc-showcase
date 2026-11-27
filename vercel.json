@@ -1,0 +1,8 @@
+{
+  "redirects": [
+    {"source": "/", "has": [{"type": "host", "value": "soc-showcase.solomonneas.dev"}], "destination": "https://solomonneas.dev/projects/designing-and-building-an-open-source-soc", "permanent": true},
+    {"source": "/:path*", "has": [{"type": "host", "value": "soc-showcase.solomonneas.dev"}], "destination": "https://solomonneas.dev/projects/designing-and-building-an-open-source-soc", "permanent": true},
+    {"source": "/", "has": [{"type": "host", "value": "soc-showcase.vercel.app"}], "destination": "https://solomonneas.dev/projects/designing-and-building-an-open-source-soc", "permanent": true},
+    {"source": "/:path*", "has": [{"type": "host", "value": "soc-showcase.vercel.app"}], "destination": "https://solomonneas.dev/projects/designing-and-building-an-open-source-soc", "permanent": true}
+  ]
+}
